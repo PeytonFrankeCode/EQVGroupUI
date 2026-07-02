@@ -1,0 +1,31 @@
+/*
+ * EQV Group — Brand color tokens
+ * Source: brand/Presentation_Template_Standard_v2.pdf
+ * See brand/BRAND.md for usage notes and accessibility ratios.
+ */
+
+:root {
+  /* Core palette */
+  --eqv-brand-blue: #0721A3; /* primary — hero fills, buttons, links, accents */
+  --eqv-ink: #000000;        /* logo wordmark, headings, footer rules */
+  --eqv-white: #FFFFFF;      /* page background, reversed logo */
+
+  /* Greys */
+  --eqv-grey-100: #F5F5F5;   /* secondary panel / section backgrounds */
+  --eqv-grey-150: #F2F2F2;   /* content-block and placeholder fills */
+  --eqv-body-grey: #686868;  /* body copy, captions, muted / footer text */
+
+  /* Semantic aliases (prefer these in components) */
+  --eqv-color-primary: var(--eqv-brand-blue);
+  --eqv-color-text: var(--eqv-ink);
+  --eqv-color-text-muted: var(--eqv-body-grey);
+  --eqv-color-bg: var(--eqv-white);
+  --eqv-color-surface: var(--eqv-grey-100);
+  --eqv-color-surface-alt: var(--eqv-grey-150);
+  --eqv-color-link: var(--eqv-brand-blue);
+  --eqv-color-on-primary: var(--eqv-white);
+
+  /* Typography */
+  --eqv-font-sans: "Aptos", system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
