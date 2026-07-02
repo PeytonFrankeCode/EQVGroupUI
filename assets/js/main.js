@@ -1,28 +1,100 @@
-/* EQV Group — site behavior: theme toggle, announcement, interactive map */
+/* EQV Group — site behavior: theme, menu, header, reveals, counters, map */
 (function () {
   "use strict";
 
-  /* ---------- Dark mode toggle (persisted) ---------- */
   var root = document.documentElement;
-  var toggle = document.getElementById("themeToggle");
+
+  /* ---------- Dark mode toggle (persisted) ---------- */
   try {
     var saved = localStorage.getItem("eqv-theme");
     if (saved) root.setAttribute("data-theme", saved);
   } catch (e) {}
 
-  if (toggle) {
-    toggle.addEventListener("click", function () {
+  var themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("eqv-theme", next); } catch (e) {}
     });
   }
 
-  /* ---------- Announcement bar dismiss ---------- */
-  var announce = document.getElementById("announce");
-  var announceClose = document.getElementById("announceClose");
-  if (announceClose && announce) {
-    announceClose.addEventListener("click", function () { announce.hidden = true; });
+  /* ---------- Full-screen menu ---------- */
+  var menuToggle = document.getElementById("menuToggle");
+  var menu = document.getElementById("menu");
+  function setMenu(open) {
+    document.body.classList.toggle("menu-open", open);
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    if (menu) menu.setAttribute("aria-hidden", String(!open));
+  }
+  if (menuToggle && menu) {
+    menuToggle.addEventListener("click", function () {
+      setMenu(!document.body.classList.contains("menu-open"));
+    });
+    menu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setMenu(false);
+    });
+  }
+
+  /* ---------- Header scroll state ---------- */
+  var header = document.getElementById("header");
+  function onScroll() {
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 24);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Scroll-reveal ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealEls.length) {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("is-visible");
+          revealObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { revealObs.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  /* ---------- Animated counters ---------- */
+  var counters = document.querySelectorAll("[data-count]");
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    var suffix = el.getAttribute("data-suffix") || "";
+    var dur = 1400, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString("en-US") + (p === 1 ? suffix : "");
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ("IntersectionObserver" in window && counters.length) {
+    var countObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          animateCounter(en.target);
+          countObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { countObs.observe(el); });
+  } else {
+    counters.forEach(function (el) {
+      el.textContent = parseInt(el.getAttribute("data-count"), 10).toLocaleString("en-US") + (el.getAttribute("data-suffix") || "");
+    });
   }
 
   /* ---------- Interactive US tile-grid map ---------- */
@@ -65,8 +137,7 @@
     if (ASSETS[abbr]) lines.push(ASSETS[abbr]);
     if (OFFICES[abbr]) lines.push(OFFICES[abbr]);
     if (!lines.length) lines.push("No EQV operations reported in this state.");
-    info.innerHTML =
-      '<strong>' + s[2] + '</strong><span>' + lines.join(" &middot; ") + '</span>';
+    info.innerHTML = "<strong>" + s[2] + "</strong><span>" + lines.join(" &middot; ") + "</span>";
   }
 
   Object.keys(STATES).forEach(function (abbr) {
