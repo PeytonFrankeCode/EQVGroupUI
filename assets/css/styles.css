@@ -1,0 +1,102 @@
+/*
+ * EQV Group — global stylesheet
+ * Brand tokens sourced from brand/BRAND.md (Presentation_Template_Standard_v2.pdf)
+ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Core palette */
+  --eqv-brand-blue: #0721A3;
+  --eqv-ink: #000000;
+  --eqv-white: #FFFFFF;
+  --eqv-grey-100: #F5F5F5;
+  --eqv-grey-150: #F2F2F2;
+  --eqv-body-grey: #686868;
+
+  /* Semantic aliases */
+  --eqv-color-primary: var(--eqv-brand-blue);
+  --eqv-color-text: var(--eqv-ink);
+  --eqv-color-text-muted: var(--eqv-body-grey);
+  --eqv-color-bg: var(--eqv-white);
+  --eqv-color-surface: var(--eqv-grey-100);
+  --eqv-color-surface-alt: var(--eqv-grey-150);
+  --eqv-color-link: var(--eqv-brand-blue);
+  --eqv-color-on-primary: var(--eqv-white);
+
+  /* Typography */
+  --eqv-font-sans: "Aptos", system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+
+  /* Scale / layout */
+  --eqv-maxw: 1200px;
+  --eqv-gutter: clamp(1rem, 4vw, 3rem);
+  --eqv-radius: 4px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--eqv-font-sans);
+  color: var(--eqv-color-text);
+  background: var(--eqv-color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { max-width: 100%; display: block; }
+a { color: var(--eqv-color-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+h1, h2, h3, h4 { line-height: 1.15; font-weight: 700; margin: 0 0 0.5em; }
+
+/* ---------- Layout helpers ---------- */
+.eqv-container {
+  max-width: var(--eqv-maxw);
+  margin-inline: auto;
+  padding-inline: var(--eqv-gutter);
+}
+
+/* ---------- Header ---------- */
+.eqv-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--eqv-white);
+  border-bottom: 1px solid var(--eqv-grey-150);
+}
+.eqv-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  gap: 1.5rem;
+}
+.eqv-logo { font-weight: 800; letter-spacing: 0.02em; font-size: 1.5rem; color: var(--eqv-ink); }
+.eqv-nav { display: flex; gap: 1.75rem; align-items: center; }
+.eqv-nav a { color: var(--eqv-ink); font-weight: 500; text-decoration: none; }
+.eqv-nav a:hover, .eqv-nav a[aria-current="page"] { color: var(--eqv-brand-blue); }
+
+/* ---------- Footer ---------- */
+.eqv-footer {
+  background: var(--eqv-ink);
+  color: var(--eqv-white);
+  padding-block: 2.5rem;
+  border-top: 3px solid var(--eqv-brand-blue);
+}
+.eqv-footer a { color: var(--eqv-white); }
+.eqv-footer small { color: #b9b9b9; }
+
+/* ---------- Buttons ---------- */
+.eqv-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--eqv-radius);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--eqv-brand-blue);
+}
+.eqv-btn--primary { background: var(--eqv-brand-blue); color: var(--eqv-white); }
+.eqv-btn--primary:hover { filter: brightness(1.12); text-decoration: none; }
+.eqv-btn--ghost { background: transparent; color: var(--eqv-brand-blue); }
+.eqv-btn--ghost:hover { background: var(--eqv-brand-blue); color: var(--eqv-white); text-decoration: none; }
