@@ -17,11 +17,13 @@ permissions:
   pages: write
   id-token: write
 
-# Only one Pages deployment at a time; cancel superseded runs so deployments
-# don't pile up in the queue (the cause of the "deployment_queued" timeouts).
+# Allow only one concurrent Pages deployment. Do NOT cancel an in-progress
+# run — a cancelled deploy leaves nothing published and makes concurrent runs
+# kill each other ("Deployment cancelled"). Queued runs wait for the active
+# one to finish instead. (Matches GitHub's official Pages starter workflow.)
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
