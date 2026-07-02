@@ -1,0 +1,59 @@
+name: Deploy site to GitHub Pages
+
+# Publishes only the static site files (index.html, other *.html pages, and
+# assets/). Internal material — the confidential brand PDF, reference
+# screenshots, notes, and research docs — is intentionally excluded so it is
+# never served on the public Pages site.
+
+on:
+  push:
+    branches:
+      - main
+      - claude/hour-tracking-setup-xqam0z
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deployment at a time; cancel superseded runs so deployments
+# don't pile up in the queue (the cause of the "deployment_queued" timeouts).
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble publishable site
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='_site' \
+            --exclude='reference' \
+            --exclude='brand' \
+            --exclude='*.md' \
+            ./ _site/
+          # Skip Jekyll processing — this is a plain static site.
+          touch _site/.nojekyll
+          echo "Published files:" && find _site -type f | sort
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
