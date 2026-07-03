@@ -196,15 +196,18 @@
   // Parallax tilt toward the cursor
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (scene && tilt && !reduceMotion) {
-    var BASE = 46, SCALE = 1.28;
+    var BASE = 58;
     scene.addEventListener("mousemove", function (e) {
       var r = scene.getBoundingClientRect();
       var nx = ((e.clientX - r.left) / r.width) * 2 - 1;
       var ny = ((e.clientY - r.top) / r.height) * 2 - 1;
-      tilt.style.transform = "rotateX(" + (BASE - ny * 4) + "deg) rotateY(" + (nx * 5) + "deg) scale(" + SCALE + ")";
+      // Drive the plane via CSS vars so beacon labels counter-rotate in lockstep
+      tilt.style.setProperty("--eqv-map-tilt", (BASE - ny * 4) + "deg");
+      tilt.style.setProperty("--eqv-map-yaw", (nx * 5) + "deg");
     });
     scene.addEventListener("mouseleave", function () {
-      tilt.style.transform = "";
+      tilt.style.removeProperty("--eqv-map-tilt");
+      tilt.style.removeProperty("--eqv-map-yaw");
     });
   }
 })();
