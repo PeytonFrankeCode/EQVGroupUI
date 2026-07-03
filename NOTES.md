@@ -36,8 +36,12 @@ redesign. Add to this as ideas come up.
 
 ### 3. Dark mode
 - Add a **dark mode toggle**.
-- Easter egg: when dark mode is switched on, reveal a **hidden meaning** of the
-  company name in the background — **"Esa Quon Vadira"** (what EQV stands for).
+- Easter egg: when dark mode is switched on, reveal the **hidden meaning** of
+  the company name — **"Esse Quam Videri"** (Latin, "to be, rather than to
+  seem" — what EQV stands for).
+- Client direction (2026-07-03): do NOT render it as background text; it
+  shows as a small tagline **directly under the EQV logo** in the header,
+  dark mode only.
 
 ## Open items
 - Awaiting **screenshots** of each current page to use as content reference for

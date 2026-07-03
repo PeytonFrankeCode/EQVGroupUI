@@ -151,11 +151,10 @@ Decisions the client has already made — these override whatever the current
 site does:
 
 1. **Motto placement:** the Latin motto **"Esse Quam Videri"** ("to be,
-   rather than to seem" — the phrase EQV is named after) currently appears
-   only as faint background text when the site is viewed in dark mode. In
-   the redesign it must NOT be a background/watermark treatment — display it
-   plainly as a tagline **directly under the EQV logo** (visible in all
-   modes).
+   rather than to seem" — the phrase EQV is named after) is a dark-mode
+   easter egg. It must NOT be a background/watermark treatment — when dark
+   mode is on, display it as a small tagline **directly under the EQV logo**
+   in the header; keep it hidden in light mode.
 
 ## 6. Company background (press/SEC research) 🟡
 

@@ -83,20 +83,17 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 }
 
 /* ---------- Logo ---------- */
-.eqv-logo { display: inline-flex; color: var(--eqv-color-text); }
+.eqv-logo { display: inline-flex; flex-direction: column; gap: .35rem; color: var(--eqv-color-text); }
 .eqv-logo__svg { height: 30px; width: 66px; display: block; }
 
-/* ---------- Easter egg ---------- */
-.eqv-easter-egg {
-  position: fixed; inset: 0; z-index: 2; display: grid; place-items: center;
-  pointer-events: none; opacity: 0; transition: opacity .8s ease;
+/* Hidden brand meaning — appears under the logo when dark mode is on */
+.eqv-logo__motto {
+  font-size: .58rem; font-weight: 600; letter-spacing: .26em;
+  text-transform: uppercase; white-space: nowrap;
+  opacity: 0; max-height: 0; overflow: hidden;
+  transition: opacity .8s ease, max-height .4s ease;
 }
-.eqv-easter-egg span {
-  font-size: clamp(2.5rem, 11vw, 9rem); font-weight: 800; letter-spacing: .12em;
-  text-transform: uppercase; color: #8FA1FF; text-align: center; transform: rotate(-8deg);
-}
-[data-theme="dark"] .eqv-easter-egg { opacity: .07; }
-main, .eqv-footer { position: relative; z-index: 1; }
+[data-theme="dark"] .eqv-logo__motto { opacity: .8; max-height: 1rem; }
 
 /* ---------- Header ---------- */
 .eqv-header {
