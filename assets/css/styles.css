@@ -271,9 +271,9 @@ body.menu-open .eqv-menu__nav a:nth-child(5) { transition-delay: .32s; }
 }
 .eqv-map3d__tilt {
   position: relative;
-  --eqv-map-tilt: 65deg;  /* steepness of the hologram plane */
+  --eqv-map-tilt: 25deg;  /* steepness of the hologram plane */
   --eqv-map-yaw: 0deg;    /* parallax, driven by JS */
-  transform: rotateX(var(--eqv-map-tilt)) rotateY(var(--eqv-map-yaw)) scale(var(--eqv-map-scale, 1.32));
+  transform: rotateX(var(--eqv-map-tilt)) rotateY(var(--eqv-map-yaw)) scale(var(--eqv-map-scale, 1.12));
   transform-style: preserve-3d; will-change: transform; transition: transform .25s ease-out;
 }
 .eqv-map3d__svg { display: block; width: 100%; height: auto; overflow: visible;
