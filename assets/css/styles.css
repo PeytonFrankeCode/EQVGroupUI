@@ -181,12 +181,12 @@ body.menu-open .eqv-menu__nav a:nth-child(5) { transition-delay: .32s; }
   position: relative; min-height: 100svh; display: flex; align-items: center;
   color: #fff; overflow: hidden;
   background:
-    radial-gradient(1100px 600px at 85% -10%, rgba(46, 75, 232, .45), transparent 60%),
-    radial-gradient(900px 700px at -10% 110%, rgba(7, 33, 163, .55), transparent 60%),
-    linear-gradient(160deg, var(--eqv-navy) 0%, var(--eqv-navy-2) 55%, #0A1445 100%);
+    radial-gradient(1100px 600px at 85% -10%, rgba(120, 143, 255, .40), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(59, 80, 180, .55), transparent 60%),
+    linear-gradient(160deg, var(--eqv-brand-blue) 0%, #1B34B8 55%, #3B50B4 100%);
 }
 .eqv-hero__waves { position: absolute; inset: 0; width: 100%; height: 100%; }
-.eqv-hero__waves path { fill: none; stroke: rgba(255,255,255,.055); stroke-width: 1.6; }
+.eqv-hero__waves path { fill: none; stroke: rgba(255,255,255,.10); stroke-width: 1.6; }
 .eqv-hero__content { position: relative; padding-block: 8rem 5rem; }
 .eqv-hero__pill {
   display: inline-flex; align-items: center; gap: .65rem;
