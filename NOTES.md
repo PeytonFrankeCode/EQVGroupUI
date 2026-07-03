@@ -33,6 +33,11 @@ redesign. Add to this as ideas come up.
 - Clicking / hovering a **region (state/basin)** pulls up info for that area
   (e.g. wells, production, basin name). Western Oklahoma + Texas Panhandle are
   the current operated focus.
+- Implemented (2026-07-03) as a **holographic 3D map**: real state geography
+  (simplified outlines in `assets/js/us-map-data.js`, derived from
+  @svg-maps/usa, MIT), CSS perspective tilt with cursor parallax, glowing
+  asset states, pulsing office beacons with light pillars (Park City, OKC),
+  hover tooltip + click info panel. No libraries; respects reduced motion.
 
 ### 3. Dark mode
 - Add a **dark mode toggle**.

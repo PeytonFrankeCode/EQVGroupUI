@@ -135,7 +135,13 @@
         </div>
         <div class="eqv-ops__grid reveal">
           <div class="eqv-map">
-            <div class="eqv-map__grid" id="usMap" role="group" aria-label="Interactive map of EQV operations by state"></div>
+            <div class="eqv-map3d" id="mapScene">
+              <div class="eqv-map3d__tilt" id="mapTilt">
+                <svg class="eqv-map3d__svg" id="usMap" viewBox="192 9 1028 746" role="group" aria-label="Interactive map of EQV operations by state"></svg>
+                <div class="eqv-map3d__beacons" id="mapBeacons" aria-hidden="true"></div>
+              </div>
+              <div class="eqv-map3d__tooltip" id="mapTip" aria-hidden="true"></div>
+            </div>
             <div class="eqv-map__legend">
               <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--asset"></i> Active Assets</span>
               <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--office"></i> EQV Offices</span>
@@ -211,6 +217,7 @@
     </div>
   </footer>
 
+  <script src="assets/js/us-map-data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -97,27 +97,11 @@
     });
   }
 
-  /* ---------- Interactive US tile-grid map ---------- */
+  /* ---------- Interactive holographic 3D US map ---------- */
   var mapEl = document.getElementById("usMap");
-  if (!mapEl) return;
+  if (!mapEl || !window.EQV_US_MAP) return;
 
-  // [row, col] on an 11-col x 8-row grid, plus full name.
-  var STATES = {
-    AK:[1,1,"Alaska"], ME:[1,11,"Maine"],
-    VT:[2,10,"Vermont"], NH:[2,11,"New Hampshire"],
-    WA:[3,1,"Washington"], ID:[3,2,"Idaho"], MT:[3,3,"Montana"], ND:[3,4,"North Dakota"],
-    MN:[3,5,"Minnesota"], WI:[3,6,"Wisconsin"], MI:[3,9,"Michigan"], NY:[3,10,"New York"], MA:[3,11,"Massachusetts"],
-    OR:[4,1,"Oregon"], NV:[4,2,"Nevada"], WY:[4,3,"Wyoming"], SD:[4,4,"South Dakota"], IA:[4,5,"Iowa"],
-    IL:[4,6,"Illinois"], IN:[4,7,"Indiana"], OH:[4,8,"Ohio"], PA:[4,9,"Pennsylvania"], NJ:[4,10,"New Jersey"], CT:[4,11,"Connecticut"],
-    CA:[5,1,"California"], UT:[5,2,"Utah"], CO:[5,3,"Colorado"], NE:[5,4,"Nebraska"], MO:[5,5,"Missouri"],
-    KY:[5,6,"Kentucky"], WV:[5,7,"West Virginia"], VA:[5,8,"Virginia"], MD:[5,9,"Maryland"], DE:[5,10,"Delaware"], RI:[5,11,"Rhode Island"],
-    AZ:[6,2,"Arizona"], NM:[6,3,"New Mexico"], KS:[6,4,"Kansas"], AR:[6,5,"Arkansas"], TN:[6,6,"Tennessee"],
-    NC:[6,7,"North Carolina"], SC:[6,8,"South Carolina"],
-    OK:[7,3,"Oklahoma"], LA:[7,4,"Louisiana"], MS:[7,5,"Mississippi"], AL:[7,6,"Alabama"], GA:[7,7,"Georgia"],
-    HI:[8,1,"Hawaii"], TX:[8,3,"Texas"], FL:[8,7,"Florida"]
-  };
-
-  // Active-asset states (highlighted) and states with EQV offices (pinned).
+  // Active-asset states (highlighted) and states with EQV offices (beacons).
   // NOTE: sample footprint drawn from the current site — replace with client data.
   var ASSETS = {
     MT:"Active producing assets", ND:"Active producing assets", WY:"Active producing assets",
@@ -125,38 +109,102 @@
     OK:"Operated portfolio — Western Oklahoma focus", TX:"Operated portfolio — Texas Panhandle focus",
     LA:"Active producing assets", MS:"Active producing assets"
   };
-  var OFFICES = { OK:"EQV office", UT:"EQV office" };
+  var OFFICES = { OK:"EQV Office — Oklahoma City", UT:"EQV Office — Park City" };
 
+  var scene = document.getElementById("mapScene");
+  var tilt = document.getElementById("mapTilt");
+  var beacons = document.getElementById("mapBeacons");
+  var tip = document.getElementById("mapTip");
   var info = document.getElementById("mapInfo");
   var current = null;
+  var SVG_NS = "http://www.w3.org/2000/svg";
+  var VB = { x: 192, y: 9, w: 1028, h: 746 };
+
+  function stateName(abbr) { return window.EQV_US_MAP[abbr][0]; }
 
   function showInfo(abbr) {
     if (!info) return;
-    var s = STATES[abbr];
     var lines = [];
     if (ASSETS[abbr]) lines.push(ASSETS[abbr]);
     if (OFFICES[abbr]) lines.push(OFFICES[abbr]);
     if (!lines.length) lines.push("No EQV operations reported in this state.");
-    info.innerHTML = "<strong>" + s[2] + "</strong><span>" + lines.join(" &middot; ") + "</span>";
+    info.innerHTML = "<strong>" + stateName(abbr) + "</strong><span>" + lines.join(" &middot; ") + "</span>";
   }
 
-  Object.keys(STATES).forEach(function (abbr) {
-    var s = STATES[abbr];
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "eqv-state";
-    btn.textContent = abbr;
-    btn.style.gridRow = s[0];
-    btn.style.gridColumn = s[1];
-    btn.setAttribute("aria-label", s[2] + (ASSETS[abbr] ? " — active assets" : ""));
-    if (ASSETS[abbr]) btn.classList.add("is-asset");
-    if (OFFICES[abbr]) btn.classList.add("is-office");
-    btn.addEventListener("click", function () {
-      if (current) current.classList.remove("is-active");
-      btn.classList.add("is-active");
-      current = btn;
-      showInfo(abbr);
+  function select(path, abbr) {
+    if (current) current.classList.remove("is-active");
+    path.classList.add("is-active");
+    current = path;
+    showInfo(abbr);
+  }
+
+  Object.keys(window.EQV_US_MAP).forEach(function (abbr) {
+    var path = document.createElementNS(SVG_NS, "path");
+    path.setAttribute("d", window.EQV_US_MAP[abbr][1]);
+    path.setAttribute("class", "eqv-geo" + (ASSETS[abbr] ? " is-asset" : ""));
+    path.setAttribute("tabindex", "0");
+    path.setAttribute("role", "button");
+    path.setAttribute("aria-label", stateName(abbr) + (ASSETS[abbr] ? " — active assets" : ""));
+    path.dataset.abbr = abbr;
+
+    path.addEventListener("click", function () { select(path, abbr); });
+    path.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(path, abbr); }
     });
-    mapEl.appendChild(btn);
+    path.addEventListener("mouseenter", function () {
+      if (!tip) return;
+      tip.textContent = stateName(abbr);
+      tip.classList.add("is-visible");
+    });
+    path.addEventListener("mouseleave", function () {
+      if (tip) tip.classList.remove("is-visible");
+    });
+    mapEl.appendChild(path);
   });
+
+  // Cursor tooltip follows the pointer in screen space
+  if (scene && tip) {
+    scene.addEventListener("mousemove", function (e) {
+      var r = scene.getBoundingClientRect();
+      tip.style.left = (e.clientX - r.left) + "px";
+      tip.style.top = (e.clientY - r.top) + "px";
+    });
+  }
+
+  // Office beacons: position holographic pillars at each office state's centroid
+  if (beacons) {
+    Object.keys(OFFICES).forEach(function (abbr) {
+      var path = mapEl.querySelector('[data-abbr="' + abbr + '"]');
+      if (!path) return;
+      var b = path.getBBox();
+      var cx = ((b.x + b.width / 2) - VB.x) / VB.w * 100;
+      var cy = ((b.y + b.height / 2) - VB.y) / VB.h * 100;
+      var el = document.createElement("div");
+      el.className = "eqv-beacon";
+      el.style.left = cx + "%";
+      el.style.top = cy + "%";
+      el.innerHTML =
+        '<span class="eqv-beacon__ring"></span>' +
+        '<span class="eqv-beacon__ring eqv-beacon__ring--2"></span>' +
+        '<span class="eqv-beacon__beam"></span>' +
+        '<span class="eqv-beacon__core"></span>' +
+        '<span class="eqv-beacon__tag">' + OFFICES[abbr] + '</span>';
+      beacons.appendChild(el);
+    });
+  }
+
+  // Parallax tilt toward the cursor
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (scene && tilt && !reduceMotion) {
+    var BASE = 46, SCALE = 1.28;
+    scene.addEventListener("mousemove", function (e) {
+      var r = scene.getBoundingClientRect();
+      var nx = ((e.clientX - r.left) / r.width) * 2 - 1;
+      var ny = ((e.clientY - r.top) / r.height) * 2 - 1;
+      tilt.style.transform = "rotateX(" + (BASE - ny * 4) + "deg) rotateY(" + (nx * 5) + "deg) scale(" + SCALE + ")";
+    });
+    scene.addEventListener("mouseleave", function () {
+      tilt.style.transform = "";
+    });
+  }
 })();
