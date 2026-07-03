@@ -196,7 +196,7 @@
   // Parallax tilt toward the cursor
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (scene && tilt && !reduceMotion) {
-    var BASE = 25;
+    var BASE = 35;
     scene.addEventListener("mousemove", function (e) {
       var r = scene.getBoundingClientRect();
       var nx = ((e.clientX - r.left) / r.width) * 2 - 1;
