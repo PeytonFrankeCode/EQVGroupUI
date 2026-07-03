@@ -93,7 +93,7 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
   opacity: 0; max-height: 0; overflow: hidden;
   transition: opacity .8s ease, max-height .4s ease;
 }
-[data-theme="dark"] .eqv-logo__motto { opacity: .8; max-height: 1rem; }
+[data-theme="dark"] .eqv-logo__motto { opacity: 1; max-height: 1rem; color: #8FA1FF; }
 
 /* ---------- Header ---------- */
 .eqv-header {
