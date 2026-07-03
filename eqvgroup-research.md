@@ -145,7 +145,19 @@ map pins also show Utah + Oklahoma City.)
   - Line-length and hierarchy issues throughout (hero paragraph is one long
     all-caps block)
 
-## 5. Company background (press/SEC research) 🟡
+## 5. Client design directives for the redesign
+
+Decisions the client has already made — these override whatever the current
+site does:
+
+1. **Motto placement:** the Latin motto **"Esse Quam Videri"** ("to be,
+   rather than to seem" — the phrase EQV is named after) currently appears
+   only as faint background text when the site is viewed in dark mode. In
+   the redesign it must NOT be a background/watermark treatment — display it
+   plainly as a tagline **directly under the EQV logo** (visible in all
+   modes).
+
+## 6. Company background (press/SEC research) 🟡
 
 - Founded 2022 by **Jerome ("Jerry") Silvey** (CEO & Chairman; ex-Magnetar
   Capital Energy & Infrastructure 2016–2022, ex-RBC Capital Markets).
@@ -163,7 +175,7 @@ map pins also show Utah + Oklahoma City.)
   since 3/5/26) · EQV Ventures Acquisition Corp. II (SPAC II; $460M raised;
   NYSE: EVAC/EVACU).
 
-## 6. Remaining gaps / questions for the client
+## 7. Remaining gaps / questions for the client
 
 1. **Careers page** — not captured; need a screenshot or its copy.
 2. **FAQ category pages** — the five categories (General, Division Orders,
@@ -182,7 +194,7 @@ map pins also show Utah + Oklahoma City.)
 7. Should the redesign keep the announcement-banner pattern for future news?
 8. Any legal/privacy pages?
 
-## 7. Sources
+## 8. Sources
 
 Screenshots (primary): `reference/screenshots/01`–`12`, captured by the
 client 2026-07-02 from the live site.
