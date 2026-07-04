@@ -328,6 +328,7 @@ body.menu-open .eqv-menu__nav a:nth-child(5) { transition-delay: .32s; }
   background: rgba(12, 20, 80, .72); border: 1px solid rgba(170, 190, 255, .45);
   backdrop-filter: blur(4px); box-shadow: 0 6px 18px rgba(2, 8, 60, .45);
 }
+.eqv-beacon__tag--left { left: auto; right: 10px; transform-origin: 100% 100%; }
 
 /* Cursor tooltip (screen space, not tilted) */
 .eqv-map3d__tooltip {

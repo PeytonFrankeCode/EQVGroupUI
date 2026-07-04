@@ -125,7 +125,18 @@
     OK:"Operated portfolio — Western Oklahoma focus", TX:"Operated portfolio — Texas Panhandle focus",
     LA:"Active producing assets", MS:"Active producing assets"
   };
-  var OFFICES = { OK:"EQV Office — Oklahoma City", UT:"EQV Office — Park City" };
+  // Offices as city points: fx/fy are fractional positions within the
+  // state's bounding box (0,0 = northwest corner).
+  var OFFICES = [
+    { state: "UT", label: "EQV Office — Park City",     fx: .51, fy: .27 },
+    { state: "OK", label: "EQV Office — Oklahoma City", fx: .64, fy: .45 },
+    { state: "TX", label: "EQV Office — Dallas",        fx: .75, fy: .35, side: "left" },
+    { state: "TX", label: "EQV Office — Houston",       fx: .86, fy: .63 }
+  ];
+  var OFFICE_BY_STATE = {};
+  OFFICES.forEach(function (o) {
+    (OFFICE_BY_STATE[o.state] = OFFICE_BY_STATE[o.state] || []).push(o.label);
+  });
 
   var scene = document.getElementById("mapScene");
   var tilt = document.getElementById("mapTilt");
@@ -142,7 +153,7 @@
     if (!info) return;
     var lines = [];
     if (ASSETS[abbr]) lines.push(ASSETS[abbr]);
-    if (OFFICES[abbr]) lines.push(OFFICES[abbr]);
+    if (OFFICE_BY_STATE[abbr]) lines = lines.concat(OFFICE_BY_STATE[abbr]);
     if (!lines.length) lines.push("No EQV operations reported in this state.");
     info.innerHTML = "<strong>" + stateName(abbr) + "</strong><span>" + lines.join(" &middot; ") + "</span>";
   }
@@ -187,14 +198,14 @@
     });
   }
 
-  // Office beacons: position holographic pillars at each office state's centroid
+  // Office beacons: holographic pillars at each office city's position
   if (beacons) {
-    Object.keys(OFFICES).forEach(function (abbr) {
-      var path = mapEl.querySelector('[data-abbr="' + abbr + '"]');
+    OFFICES.forEach(function (o) {
+      var path = mapEl.querySelector('[data-abbr="' + o.state + '"]');
       if (!path) return;
       var b = path.getBBox();
-      var cx = ((b.x + b.width / 2) - VB.x) / VB.w * 100;
-      var cy = ((b.y + b.height / 2) - VB.y) / VB.h * 100;
+      var cx = ((b.x + b.width * o.fx) - VB.x) / VB.w * 100;
+      var cy = ((b.y + b.height * o.fy) - VB.y) / VB.h * 100;
       var el = document.createElement("div");
       el.className = "eqv-beacon";
       el.style.left = cx + "%";
@@ -204,7 +215,7 @@
         '<span class="eqv-beacon__ring eqv-beacon__ring--2"></span>' +
         '<span class="eqv-beacon__beam"></span>' +
         '<span class="eqv-beacon__core"></span>' +
-        '<span class="eqv-beacon__tag">' + OFFICES[abbr] + '</span>';
+        '<span class="eqv-beacon__tag' + (o.side === "left" ? " eqv-beacon__tag--left" : "") + '">' + o.label + '</span>';
       beacons.appendChild(el);
     });
   }
