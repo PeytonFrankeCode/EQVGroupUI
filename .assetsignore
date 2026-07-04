@@ -1,0 +1,19 @@
+# Cloudflare Workers static assets — files that must NEVER be served on the
+# live site (wrangler.jsonc serves the repo root). Same syntax as .gitignore.
+
+# Internal / confidential material
+brand
+reference
+scripts
+*.md
+
+# Repo plumbing
+.git
+.github
+.gitignore
+.wrangler
+.dev.vars*
+.env*
+node_modules
+wrangler.jsonc
+_site
