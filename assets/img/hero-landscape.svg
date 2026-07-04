@@ -1,87 +1,78 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <!-- Dawn sky: deep night blue fading to warm light at the horizon -->
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#081234"/>
-      <stop offset=".45" stop-color="#1B2E6E"/>
-      <stop offset=".68" stop-color="#4A4A8E"/>
-      <stop offset=".82" stop-color="#B96B4E"/>
-      <stop offset=".95" stop-color="#F0A052"/>
+      <stop offset="0" stop-color="#0A1440"/>
+      <stop offset=".38" stop-color="#22336E"/>
+      <stop offset=".58" stop-color="#5A548F"/>
+      <stop offset=".74" stop-color="#C07A55"/>
+      <stop offset=".9" stop-color="#F2A65B"/>
     </linearGradient>
-    <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
-      <stop offset="0" stop-color="#FFE3AE" stop-opacity=".95"/>
-      <stop offset=".35" stop-color="#FFC170" stop-opacity=".55"/>
-      <stop offset="1" stop-color="#FFC170" stop-opacity="0"/>
+    <radialGradient id="sunHalo" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFDFA3" stop-opacity=".9"/>
+      <stop offset=".3" stop-color="#FFBE72" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#FFBE72" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="ridgeFar" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#55609F"/>
-      <stop offset="1" stop-color="#414D8C"/>
+    <radialGradient id="sunCore" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF7E2"/>
+      <stop offset=".7" stop-color="#FFE1A6"/>
+      <stop offset="1" stop-color="#FFD489"/>
+    </radialGradient>
+    <linearGradient id="rangeFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7E77AE"/>
+      <stop offset=".55" stop-color="#635F9D"/>
+      <stop offset="1" stop-color="#535488"/>
     </linearGradient>
-    <linearGradient id="ridgeMid" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#33407F"/>
-      <stop offset="1" stop-color="#28356E"/>
+    <linearGradient id="rangeMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#454A89"/>
+      <stop offset="1" stop-color="#323A74"/>
     </linearGradient>
-    <linearGradient id="ridgeNear" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1E2A5E"/>
-      <stop offset="1" stop-color="#16204C"/>
+    <linearGradient id="rangeNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#252D60"/>
+      <stop offset="1" stop-color="#19224E"/>
     </linearGradient>
-    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#101A40"/>
-      <stop offset="1" stop-color="#0A122E"/>
+    <linearGradient id="valley" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#131C44"/>
+      <stop offset="1" stop-color="#0B1330"/>
     </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+    <filter id="soft2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter>
   </defs>
 
-  <!-- Sky -->
   <rect width="1920" height="1080" fill="url(#sky)"/>
 
-  <!-- Sun and glow, low over the basin -->
-  <circle cx="1290" cy="760" r="420" fill="url(#sunGlow)"/>
-  <circle cx="1290" cy="762" r="74" fill="#FFE9C4"/>
+  <!-- Sun above the range -->
+  <circle cx="1230" cy="400" r="400" fill="url(#sunHalo)"/>
+  <circle cx="1230" cy="400" r="62" fill="url(#sunCore)"/>
+  <circle cx="1230" cy="400" r="74" fill="#FFE1A6" opacity=".35" filter="url(#soft2)"/>
 
-  <!-- Thin dawn clouds -->
-  <g fill="#F5B36B" opacity=".35">
-    <ellipse cx="420" cy="560" rx="300" ry="14"/>
-    <ellipse cx="880" cy="500" rx="220" ry="10"/>
-    <ellipse cx="1520" cy="540" rx="260" ry="12"/>
-  </g>
-  <g fill="#7C6AB8" opacity=".35">
-    <ellipse cx="640" cy="430" rx="340" ry="12"/>
-    <ellipse cx="1360" cy="390" rx="280" ry="10"/>
-  </g>
-
-  <!-- Far ridge -->
-  <path fill="url(#ridgeFar)" d="M0 760 L120 726 L260 748 L420 700 L560 736 L720 690 L900 738 L1060 704 L1240 744 L1400 712 L1560 746 L1720 716 L1920 752 L1920 1080 L0 1080 Z"/>
-
-  <!-- Mid ridge -->
-  <path fill="url(#ridgeMid)" d="M0 850 L160 800 L300 834 L470 780 L640 828 L820 786 L1010 836 L1180 796 L1370 842 L1540 806 L1710 844 L1920 812 L1920 1080 L0 1080 Z"/>
-
-  <!-- Near ridge -->
-  <path fill="url(#ridgeNear)" d="M0 940 L180 892 L360 930 L560 878 L760 926 L980 884 L1200 934 L1420 894 L1640 936 L1820 904 L1920 926 L1920 1080 L0 1080 Z"/>
-
-  <!-- Pumpjacks silhouetted on the near ridge -->
-  <g fill="#0B1330">
-    <!-- left pumpjack -->
-    <g transform="translate(430 880) scale(1.05)">
-      <rect x="26" y="26" width="5" height="42" transform="rotate(18 28 47)"/>
-      <rect x="40" y="26" width="5" height="42" transform="rotate(-18 43 47)"/>
-      <rect x="6" y="18" width="66" height="7" rx="3.5"/>
-      <path d="M4 14 a11 11 0 0 1 0 22 z"/>
-      <rect x="66" y="21" width="9" height="14" rx="2"/>
-      <rect x="70" y="33" width="3" height="34"/>
-      <rect x="0" y="66" width="82" height="5"/>
-    </g>
-    <!-- right pumpjack, smaller and farther -->
-    <g transform="translate(1560 902) scale(.8)">
-      <rect x="26" y="26" width="5" height="42" transform="rotate(18 28 47)"/>
-      <rect x="40" y="26" width="5" height="42" transform="rotate(-18 43 47)"/>
-      <rect x="6" y="18" width="66" height="7" rx="3.5"/>
-      <path d="M4 14 a11 11 0 0 1 0 22 z"/>
-      <rect x="66" y="21" width="9" height="14" rx="2"/>
-      <rect x="70" y="33" width="3" height="34"/>
-      <rect x="0" y="66" width="82" height="5"/>
-    </g>
+  <!-- High clouds -->
+  <g filter="url(#soft2)">
+    <ellipse cx="480" cy="320" rx="340" ry="13" fill="#8E79BC" opacity=".38"/>
+    <ellipse cx="900" cy="245" rx="260" ry="10" fill="#6F63AE" opacity=".35"/>
+    <ellipse cx="1600" cy="290" rx="290" ry="12" fill="#B98BA0" opacity=".33"/>
+    <ellipse cx="1100" cy="505" rx="430" ry="13" fill="#F3B173" opacity=".38"/>
+    <ellipse cx="380" cy="545" rx="320" ry="11" fill="#E9A265" opacity=".3"/>
   </g>
 
-  <!-- Foreground plain -->
-  <path fill="url(#ground)" d="M0 1000 L240 972 L520 996 L820 968 L1140 998 L1460 972 L1740 996 L1920 980 L1920 1080 L0 1080 Z"/>
+  <!-- Far range: sharp alpine peaks -->
+  <path fill="url(#rangeFar)" d="M 0 720 Q 55 673 110 655 Q 160 605 210 585 Q 260 668 310 700 Q 365 588 420 545 Q 475 649 530 690 Q 585 632 640 610 Q 685 686 730 715 Q 785 578 840 525 Q 895 637 950 680 Q 1005 619 1060 595 Q 1105 671 1150 700 Q 1205 599 1260 560 Q 1310 654 1360 690 Q 1415 607 1470 575 Q 1525 669 1580 705 Q 1635 644 1690 620 Q 1740 678 1790 700 Q 1825 671 1860 660 Q 1890 682 1920 690 L 1920 690 L 1920 1080 L 0 1080 L 0 720 Z"/>
+  <path fill="none" stroke="#FFCF92" stroke-width="3" stroke-linecap="round" opacity=".45" d="M 0 720 Q 55 673 110 655 Q 160 605 210 585 Q 260 668 310 700 Q 365 588 420 545 Q 475 649 530 690 Q 585 632 640 610 Q 685 686 730 715 Q 785 578 840 525 Q 895 637 950 680 Q 1005 619 1060 595 Q 1105 671 1150 700 Q 1205 599 1260 560 Q 1310 654 1360 690 Q 1415 607 1470 575 Q 1525 669 1580 705 Q 1635 644 1690 620 Q 1740 678 1790 700 Q 1825 671 1860 660 Q 1890 682 1920 690"/>
+  <g fill="#E4E9FA" opacity=".8"><path d="M 420 545 L 448.6 585 L 434.56 573.8 L 420 591.0 L 404.4 572.2 L 394.0 583.0 Z"/><path d="M 840 525 L 870.8 569 L 855.68 556.68 L 840 575.6 L 823.2 554.92 L 812.0 566.8 Z"/><path d="M 1260 560 L 1287.5 598 L 1274.0 587.36 L 1260 603.7 L 1245.0 585.84 L 1235.0 596.1 Z"/><path d="M 1470 575 L 1494.2 609 L 1482.32 599.48 L 1470 614.1 L 1456.8 598.12 L 1448.0 607.3 Z"/><path d="M 210 585 L 234.2 619 L 222.32 609.48 L 210 624.1 L 196.8 608.12 L 188.0 617.3 Z"/><path d="M 1060 595 L 1082.0 625 L 1071.2 616.6 L 1060 629.5 L 1048.0 615.4 L 1040.0 623.5 Z"/></g>
+
+  <!-- Valley mist -->
+  <g filter="url(#soft)">
+    <ellipse cx="700" cy="795" rx="700" ry="44" fill="#E8A468" opacity=".22"/>
+    <ellipse cx="1500" cy="778" rx="520" ry="38" fill="#F0AE6E" opacity=".2"/>
+  </g>
+
+  <!-- Mid range -->
+  <path fill="url(#rangeMid)" d="M 0 860 Q 70 817 140 800 Q 210 760 280 745 Q 350 806 420 830 Q 490 787 560 770 Q 630 831 700 855 Q 770 801 840 780 Q 910 827 980 845 Q 1050 784 1120 760 Q 1190 825 1260 850 Q 1330 803 1400 785 Q 1470 835 1540 855 Q 1610 812 1680 795 Q 1745 835 1810 850 Q 1865 832 1920 825 L 1920 825 L 1920 1080 L 0 1080 L 0 860 Z"/>
+  <path fill="none" stroke="#FFB877" stroke-width="2.5" stroke-linecap="round" opacity=".28" d="M 0 860 Q 70 817 140 800 Q 210 760 280 745 Q 350 806 420 830 Q 490 787 560 770 Q 630 831 700 855 Q 770 801 840 780 Q 910 827 980 845 Q 1050 784 1120 760 Q 1190 825 1260 850 Q 1330 803 1400 785 Q 1470 835 1540 855 Q 1610 812 1680 795 Q 1745 835 1810 850 Q 1865 832 1920 825"/>
+  <g fill="#C7D1F0" opacity=".5"><path d="M 280 745 L 302.0 771 L 291.2 763.72 L 280 774.9 L 268.0 762.68 L 260.0 769.7 Z"/><path d="M 1120 760 L 1140.9 784 L 1130.64 777.28 L 1120 787.6 L 1108.6 776.32 L 1101.0 782.8 Z"/></g>
+
+  <!-- Near foothills -->
+  <path fill="url(#rangeNear)" d="M 0 955 Q 90 926 180 915 Q 270 937 360 945 Q 460 913 560 900 Q 660 929 760 940 Q 860 915 960 905 Q 1060 934 1160 945 Q 1260 920 1360 910 Q 1460 935 1560 945 Q 1650 923 1740 915 Q 1830 933 1920 940 L 1920 940 L 1920 1080 L 0 1080 L 0 955 Z"/>
+
+  <!-- Valley floor -->
+  <path fill="url(#valley)" d="M0 1012 C 300 998, 620 1016, 940 1002 C 1260 988, 1580 1010, 1920 998 L 1920 1080 L 0 1080 Z"/>
 </svg>
