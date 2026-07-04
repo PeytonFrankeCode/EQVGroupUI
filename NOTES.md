@@ -20,6 +20,10 @@ redesign. Add to this as ideas come up.
 ### 1. Timeline page
 - A vertical timeline with **a line down the middle**.
 - As you **scroll down**, milestones animate/reveal one at a time.
+- Implemented (2026-07-05) on `team.html` ("Our Team") together with the
+  executive management section: center-line alternating timeline, seven
+  milestones (founding through NYSE: FTW), scroll-revealed. Exec bios are
+  drawn from SEC filings — confirm titles/bios with client and add photos.
 - Content to plot along the timeline:
   - Company **founding(s)** (EQV Group 2022; the SPACs; entity milestones)
   - **Acquisitions** (14+ completed)
