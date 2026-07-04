@@ -249,7 +249,7 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 [data-theme="dark"] .eqv-hero {
   background:
     linear-gradient(105deg, rgba(3, 6, 20, .5) 0%, rgba(3, 6, 20, .2) 55%, rgba(3, 6, 20, .12) 100%),
-    url("../img/hero-landscape-night.svg") center 70% / cover no-repeat,
+    url("../img/hero-night.jpg") center 70% / cover no-repeat,
     var(--eqv-navy);
 }
 [data-theme="dark"] .eqv-hero__content,
