@@ -51,6 +51,13 @@ redesign. Add to this as ideas come up.
 - Client direction (2026-07-03): do NOT render it as background text; it
   shows as a small tagline **directly under the EQV logo** in the header,
   dark mode only.
+- Client direction (2026-07-05): in dark mode the front-page hero transforms —
+  the headline/description/buttons fade out, the background swaps to a darker
+  night scene, and "Esse Quam Videri" fades in with its meaning ("To be,
+  rather than to seem") beneath it. Implemented; the night background is a
+  generated moonlit variant of the hero art (`hero-landscape-night.svg`) as a
+  **placeholder until the client provides the darker photo** — swap the file
+  or the `[data-theme="dark"] .eqv-hero` background URL when it arrives.
 
 ## Open items
 - Confirm current stats/figures with client before publishing (see open

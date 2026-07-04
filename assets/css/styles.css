@@ -225,6 +225,43 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 }
 @keyframes eqv-scroll { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
 
+/* ---------- Dark-mode hero reveal ---------- */
+/* In dark mode the hero swaps to the night scene, the marketing copy
+   fades away, and the brand motto fades in. */
+.eqv-hero { transition: background .6s ease; }
+.eqv-hero__content, .eqv-hero__scroll { transition: opacity .55s ease, visibility .55s ease; }
+.eqv-hero__motto-reveal {
+  position: absolute; inset: 0; display: grid; place-content: center;
+  text-align: center; pointer-events: none;
+  opacity: 0; visibility: hidden; transform: translateY(14px);
+  transition: opacity 1.3s ease .35s, transform 1.3s ease .35s, visibility 0s linear 1.65s;
+}
+.eqv-hero__motto-main {
+  font-size: clamp(2.4rem, 6.5vw, 5.4rem); font-weight: 800; line-height: 1.1;
+  text-transform: uppercase; letter-spacing: .05em; color: #fff; margin: 0 0 1.1rem;
+  text-shadow: 0 4px 40px rgba(4, 8, 31, .8);
+}
+.eqv-hero__motto-sub {
+  color: rgba(224, 231, 255, .8); margin: 0;
+  font-size: clamp(.95rem, 1.7vw, 1.25rem); font-weight: 600;
+  letter-spacing: .3em; text-transform: uppercase;
+}
+[data-theme="dark"] .eqv-hero {
+  background:
+    linear-gradient(105deg, rgba(3, 6, 20, .5) 0%, rgba(3, 6, 20, .2) 55%, rgba(3, 6, 20, .12) 100%),
+    url("../img/hero-landscape-night.svg") center 70% / cover no-repeat,
+    var(--eqv-navy);
+}
+[data-theme="dark"] .eqv-hero__content,
+[data-theme="dark"] .eqv-hero__scroll { opacity: 0; visibility: hidden; pointer-events: none; }
+[data-theme="dark"] .eqv-hero__motto-reveal {
+  opacity: 1; visibility: visible; transform: none;
+  transition: opacity 1.3s ease .35s, transform 1.3s ease .35s, visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .eqv-hero, .eqv-hero__content, .eqv-hero__scroll, .eqv-hero__motto-reveal { transition: none; }
+}
+
 /* ---------- Buttons ---------- */
 .eqv-btn {
   display: inline-flex; align-items: center; gap: .5rem;
