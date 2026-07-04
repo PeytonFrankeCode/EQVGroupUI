@@ -97,6 +97,22 @@
     });
   }
 
+  /* ---------- Contact form (mailto compose — no backend on static host) ---------- */
+  var contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = contactForm.elements;
+      var body = "Name: " + f.firstName.value + " " + f.lastName.value +
+        "\nEmail: " + f.email.value +
+        (f.phone.value ? "\nPhone: " + f.phone.value : "") +
+        "\n\n" + f.message.value;
+      window.location.href = "mailto:contact@eqvoperating.com" +
+        "?subject=" + encodeURIComponent(f.subject.value) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
   /* ---------- Interactive holographic 3D US map ---------- */
   var mapEl = document.getElementById("usMap");
   if (!mapEl || !window.EQV_US_MAP) return;

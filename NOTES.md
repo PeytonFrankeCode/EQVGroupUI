@@ -49,7 +49,16 @@ redesign. Add to this as ideas come up.
   dark mode only.
 
 ## Open items
-- Awaiting **screenshots** of each current page to use as content reference for
-  the fresh redesign (front page first).
 - Confirm current stats/figures with client before publishing (see open
   questions in `eqvgroup-research.md`).
+- **PDF documents**: the owner-forms cards on `eqv-operating.html` (W-9,
+  Direct Deposit, Change of Address, Affidavit of Heirship, ACH instructions)
+  point to `#` placeholders — get the real PDFs from the client and drop them
+  in `assets/docs/`.
+- **Careers page**: built with generic copy — the live site's Careers page was
+  never captured; replace with real content when available.
+- **Contact form**: static host, so submit composes a pre-filled email
+  (mailto) to contact@eqvoperating.com. Upgrade path: a small Cloudflare
+  Worker + email routing if the client wants true in-page submission.
+- FAQ categories carry the answers verified from the live site; the client
+  may have more Q&As per category to migrate.
