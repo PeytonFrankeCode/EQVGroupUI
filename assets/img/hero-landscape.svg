@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Dawn sky: deep night blue fading to warm light at the horizon -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#081234"/>
+      <stop offset=".45" stop-color="#1B2E6E"/>
+      <stop offset=".68" stop-color="#4A4A8E"/>
+      <stop offset=".82" stop-color="#B96B4E"/>
+      <stop offset=".95" stop-color="#F0A052"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFE3AE" stop-opacity=".95"/>
+      <stop offset=".35" stop-color="#FFC170" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#FFC170" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ridgeFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#55609F"/>
+      <stop offset="1" stop-color="#414D8C"/>
+    </linearGradient>
+    <linearGradient id="ridgeMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33407F"/>
+      <stop offset="1" stop-color="#28356E"/>
+    </linearGradient>
+    <linearGradient id="ridgeNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1E2A5E"/>
+      <stop offset="1" stop-color="#16204C"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101A40"/>
+      <stop offset="1" stop-color="#0A122E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+
+  <!-- Sun and glow, low over the basin -->
+  <circle cx="1290" cy="760" r="420" fill="url(#sunGlow)"/>
+  <circle cx="1290" cy="762" r="74" fill="#FFE9C4"/>
+
+  <!-- Thin dawn clouds -->
+  <g fill="#F5B36B" opacity=".35">
+    <ellipse cx="420" cy="560" rx="300" ry="14"/>
+    <ellipse cx="880" cy="500" rx="220" ry="10"/>
+    <ellipse cx="1520" cy="540" rx="260" ry="12"/>
+  </g>
+  <g fill="#7C6AB8" opacity=".35">
+    <ellipse cx="640" cy="430" rx="340" ry="12"/>
+    <ellipse cx="1360" cy="390" rx="280" ry="10"/>
+  </g>
+
+  <!-- Far ridge -->
+  <path fill="url(#ridgeFar)" d="M0 760 L120 726 L260 748 L420 700 L560 736 L720 690 L900 738 L1060 704 L1240 744 L1400 712 L1560 746 L1720 716 L1920 752 L1920 1080 L0 1080 Z"/>
+
+  <!-- Mid ridge -->
+  <path fill="url(#ridgeMid)" d="M0 850 L160 800 L300 834 L470 780 L640 828 L820 786 L1010 836 L1180 796 L1370 842 L1540 806 L1710 844 L1920 812 L1920 1080 L0 1080 Z"/>
+
+  <!-- Near ridge -->
+  <path fill="url(#ridgeNear)" d="M0 940 L180 892 L360 930 L560 878 L760 926 L980 884 L1200 934 L1420 894 L1640 936 L1820 904 L1920 926 L1920 1080 L0 1080 Z"/>
+
+  <!-- Pumpjacks silhouetted on the near ridge -->
+  <g fill="#0B1330">
+    <!-- left pumpjack -->
+    <g transform="translate(430 880) scale(1.05)">
+      <rect x="26" y="26" width="5" height="42" transform="rotate(18 28 47)"/>
+      <rect x="40" y="26" width="5" height="42" transform="rotate(-18 43 47)"/>
+      <rect x="6" y="18" width="66" height="7" rx="3.5"/>
+      <path d="M4 14 a11 11 0 0 1 0 22 z"/>
+      <rect x="66" y="21" width="9" height="14" rx="2"/>
+      <rect x="70" y="33" width="3" height="34"/>
+      <rect x="0" y="66" width="82" height="5"/>
+    </g>
+    <!-- right pumpjack, smaller and farther -->
+    <g transform="translate(1560 902) scale(.8)">
+      <rect x="26" y="26" width="5" height="42" transform="rotate(18 28 47)"/>
+      <rect x="40" y="26" width="5" height="42" transform="rotate(-18 43 47)"/>
+      <rect x="6" y="18" width="66" height="7" rx="3.5"/>
+      <path d="M4 14 a11 11 0 0 1 0 22 z"/>
+      <rect x="66" y="21" width="9" height="14" rx="2"/>
+      <rect x="70" y="33" width="3" height="34"/>
+      <rect x="0" y="66" width="82" height="5"/>
+    </g>
+  </g>
+
+  <!-- Foreground plain -->
+  <path fill="url(#ground)" d="M0 1000 L240 972 L520 996 L820 968 L1140 998 L1460 972 L1740 996 L1920 980 L1920 1080 L0 1080 Z"/>
+</svg>
