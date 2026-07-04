@@ -27,6 +27,7 @@
   --eqv-color-primary: var(--eqv-brand-blue);
   --eqv-color-on-primary: var(--eqv-white);
   --eqv-header-bg: rgba(255, 255, 255, 0.85);
+  --eqv-footer-bg: var(--eqv-navy);
 
   /* Type & layout */
   --eqv-font-sans: "Aptos", system-ui, -apple-system, "Segoe UI", Roboto,
@@ -38,14 +39,17 @@
 }
 
 [data-theme="dark"] {
+  /* Dark mode is deep BLUE, not black — pages, surfaces, and the
+     header's frosted blur all shift into the brand blue family. */
   --eqv-color-text: #EDEFF7;
-  --eqv-color-text-muted: #9CA3BC;
-  --eqv-color-bg: #070A18;
-  --eqv-color-surface: #0D1228;
-  --eqv-color-border: #1B2244;
+  --eqv-color-text-muted: #A9B2D6;
+  --eqv-color-bg: #060C2E;
+  --eqv-color-surface: #0C1642;
+  --eqv-color-border: #1E2C6B;
   --eqv-color-link: #8FA1FF;
   --eqv-color-primary: #3D57E0;
-  --eqv-header-bg: rgba(7, 10, 24, 0.85);
+  --eqv-header-bg: rgba(11, 30, 132, 0.55);
+  --eqv-footer-bg: #081142;
 }
 
 /* ---------- Reset ---------- */
@@ -181,8 +185,9 @@ body.menu-open .eqv-menu__nav a:nth-child(5) { transition-delay: .32s; }
   position: relative; min-height: 100svh; display: flex; align-items: center;
   color: #fff; overflow: hidden;
   background:
-    radial-gradient(1100px 600px at 85% -10%, rgba(120, 143, 255, .40), transparent 60%),
-    radial-gradient(900px 700px at -10% 110%, rgba(59, 80, 180, .55), transparent 60%),
+    radial-gradient(1100px 600px at 85% -10%, rgba(120, 143, 255, .35), transparent 60%),
+    linear-gradient(160deg, rgba(7, 33, 163, .88) 0%, rgba(27, 52, 184, .84) 55%, rgba(59, 80, 180, .78) 100%),
+    url("../img/hero-landscape.jpg") center 70% / cover no-repeat,
     linear-gradient(160deg, var(--eqv-brand-blue) 0%, #1B34B8 55%, #3B50B4 100%);
 }
 .eqv-hero__waves { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -473,7 +478,7 @@ details.eqv-faq .eqv-faq__a p { margin: 0 0 .6rem; }
 .eqv-form__note { font-size: .85rem; color: var(--eqv-color-text-muted); margin: 0; }
 
 /* ---------- Footer ---------- */
-.eqv-footer { background: var(--eqv-navy); color: #fff; padding-block: clamp(3rem, 6vw, 4.5rem) 1.75rem; }
+.eqv-footer { background: var(--eqv-footer-bg); color: #fff; padding-block: clamp(3rem, 6vw, 4.5rem) 1.75rem; }
 .eqv-footer__top {
   display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 2.5rem; align-items: start;
   padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.12);
