@@ -221,22 +221,28 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 
 /* ---------- Dark-mode hero reveal ---------- */
 /* In dark mode the hero swaps to the night scene, the marketing copy
-   fades away, and the brand motto fades in. */
-.eqv-hero { transition: background .6s ease; }
-.eqv-hero__content, .eqv-hero__scroll { transition: opacity .55s ease, visibility .55s ease; }
+   fades away, and the brand motto fades in. Direction-dependent timing:
+   these base rules govern the return to LIGHT (quick); the
+   [data-theme="dark"] rules below govern entering DARK (slow build). */
+.eqv-hero { transition: background .5s ease; }
+.eqv-hero__content, .eqv-hero__scroll { transition: opacity .45s ease, visibility .45s ease; }
 .eqv-hero__motto-reveal {
   position: absolute; inset: 0; display: grid; place-content: center;
   text-align: center; pointer-events: none;
   opacity: 0; visibility: hidden; transform: translateY(18px);
-  transition: opacity 3.5s ease .6s, transform 3.5s ease .6s, visibility 0s linear 4.1s;
+  transition: opacity .4s ease, transform .4s ease, visibility 0s linear .4s;
 }
+/* Ghost-glass treatment: barely-there translucent fill with a faint
+   stroke and cool glow, so the motto reads as part of the night sky. */
 .eqv-hero__motto-main {
   font-size: clamp(2.4rem, 6.5vw, 5.4rem); font-weight: 800; line-height: 1.1;
-  text-transform: uppercase; letter-spacing: .05em; color: #fff; margin: 0 0 1.1rem;
-  text-shadow: 0 4px 40px rgba(4, 8, 31, .8);
+  text-transform: uppercase; letter-spacing: .08em; margin: 0 0 1.1rem;
+  color: rgba(255, 255, 255, .12);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, .34);
+  text-shadow: 0 0 32px rgba(170, 195, 255, .22);
 }
 .eqv-hero__motto-sub {
-  color: rgba(224, 231, 255, .8); margin: 0;
+  color: rgba(224, 231, 255, .42); margin: 0;
   font-size: clamp(.95rem, 1.7vw, 1.25rem); font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase;
 }
@@ -246,8 +252,12 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
     url("../img/hero-night.jpg") center 70% / cover no-repeat,
     var(--eqv-navy);
 }
+[data-theme="dark"] .eqv-hero { transition: background 1.8s ease; }
 [data-theme="dark"] .eqv-hero__content,
-[data-theme="dark"] .eqv-hero__scroll { opacity: 0; visibility: hidden; pointer-events: none; }
+[data-theme="dark"] .eqv-hero__scroll {
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 1.1s ease, visibility 1.1s ease;
+}
 [data-theme="dark"] .eqv-hero__motto-reveal {
   opacity: 1; visibility: visible; transform: none;
   transition: opacity 3.5s ease .6s, transform 3.5s ease .6s, visibility 0s;
