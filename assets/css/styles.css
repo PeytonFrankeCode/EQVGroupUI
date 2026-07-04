@@ -90,14 +90,8 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 .eqv-logo { display: inline-flex; flex-direction: column; gap: .35rem; color: var(--eqv-color-text); }
 .eqv-logo__svg { height: 44px; width: 97px; display: block; }
 
-/* Hidden brand meaning — appears under the logo when dark mode is on */
-.eqv-logo__motto {
-  font-size: .58rem; font-weight: 600; letter-spacing: .26em;
-  text-transform: uppercase; white-space: nowrap;
-  opacity: 0; max-height: 0; overflow: hidden;
-  transition: opacity .8s ease, max-height .4s ease;
-}
-[data-theme="dark"] .eqv-logo__motto { opacity: 1; max-height: 1rem; color: #8FA1FF; }
+/* The motto reveal lives in the front-page hero (dark mode) — not under the logo */
+.eqv-logo__motto { display: none; }
 
 /* ---------- Header ---------- */
 .eqv-header {
@@ -233,8 +227,8 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-hero__motto-reveal {
   position: absolute; inset: 0; display: grid; place-content: center;
   text-align: center; pointer-events: none;
-  opacity: 0; visibility: hidden; transform: translateY(14px);
-  transition: opacity 1.3s ease .35s, transform 1.3s ease .35s, visibility 0s linear 1.65s;
+  opacity: 0; visibility: hidden; transform: translateY(18px);
+  transition: opacity 3.5s ease .6s, transform 3.5s ease .6s, visibility 0s linear 4.1s;
 }
 .eqv-hero__motto-main {
   font-size: clamp(2.4rem, 6.5vw, 5.4rem); font-weight: 800; line-height: 1.1;
@@ -256,7 +250,7 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 [data-theme="dark"] .eqv-hero__scroll { opacity: 0; visibility: hidden; pointer-events: none; }
 [data-theme="dark"] .eqv-hero__motto-reveal {
   opacity: 1; visibility: visible; transform: none;
-  transition: opacity 1.3s ease .35s, transform 1.3s ease .35s, visibility 0s;
+  transition: opacity 3.5s ease .6s, transform 3.5s ease .6s, visibility 0s;
 }
 @media (prefers-reduced-motion: reduce) {
   .eqv-hero, .eqv-hero__content, .eqv-hero__scroll, .eqv-hero__motto-reveal { transition: none; }
