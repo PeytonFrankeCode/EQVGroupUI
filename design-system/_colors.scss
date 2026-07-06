@@ -1,0 +1,42 @@
+// EQV Group — Brand Color Standard
+// Exact, approved colors extracted from Presentation_Template_Standard_v2.
+// Source of truth. Do not add colors without sign-off. Extracted 2026-07-06.
+
+// Primary / Brand
+$eqv-blue: #0721A3; // Core brand color
+
+// Neutrals
+$eqv-white: #FFFFFF;
+$eqv-black: #000000;
+$eqv-near-black: #030303;
+
+// Grays
+$eqv-gray-50: #F5F5F5;
+$eqv-gray-100: #F2F2F2;
+$eqv-gray-500: #686868;
+$eqv-gray-600: #767676;
+
+// Accent (decorative only — cover wave texture)
+$eqv-blue-wave: #3C50B4;
+
+// Semantic aliases
+$eqv-color-primary: $eqv-blue;
+$eqv-color-bg: $eqv-white;
+$eqv-color-surface: $eqv-gray-100;
+$eqv-color-text: $eqv-black;
+$eqv-color-text-secondary: $eqv-gray-500;
+$eqv-color-text-muted: $eqv-gray-600;
+$eqv-color-border: $eqv-blue;
+
+// Map for programmatic iteration
+$eqv-colors: (
+  "blue": $eqv-blue,
+  "white": $eqv-white,
+  "black": $eqv-black,
+  "near-black": $eqv-near-black,
+  "gray-50": $eqv-gray-50,
+  "gray-100": $eqv-gray-100,
+  "gray-500": $eqv-gray-500,
+  "gray-600": $eqv-gray-600,
+  "blue-wave": $eqv-blue-wave,
+);
