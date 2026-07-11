@@ -1,0 +1,5 @@
+# Legacy eqvgroup.com paths -> new pages
+/owners                  /eqv-operating   301
+/faq                     /eqv-operating   301
+/changes-to-your-account /eqv-operating   301
+/news/*                  /news            301

@@ -444,6 +444,7 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-news-article time { color: var(--eqv-color-primary); font-weight: 700; font-size: .9rem; padding-top: .3rem; }
 .eqv-news-article h2 { font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; margin-bottom: .7rem; }
 .eqv-news-article p { margin: 0; color: var(--eqv-color-text-muted); max-width: 75ch; }
+.eqv-news-article__link { display: inline-block; margin-top: .8rem; font-weight: 700; font-size: .92rem; }
 @media (max-width: 640px) { .eqv-news-article { grid-template-columns: 1fr; gap: .5rem; } }
 
 /* ---------- Document cards (owner relations) ---------- */
