@@ -14,3 +14,8 @@ list briefly and reset it.
    before swapping it in.
 2. **Session worklog set up** — this file; tracks activity until Peyton asks
    for a summary, then resets.
+3. **`/supervirushack` easter-egg page** — built `supervirushack.html`: a
+   fake "Extracting data…" progress bar (EQV Secure Uplink, joke hacker
+   log lines) that on reaching 100% shows "Thank you for your information"
+   and redirects to the home page after ~2.6s. Pure theater — collects and
+   sends nothing; noindex so it stays off search engines.

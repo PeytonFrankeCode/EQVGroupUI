@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extracting…</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/eqv-logo.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    body { min-height: 100svh; display: grid; place-items: center; overflow: hidden;
+      background: radial-gradient(1000px 600px at 50% 0%, #0c1642, #060c2e 70%); }
+    .shk { width: min(680px, 90vw); text-align: center; font-family: var(--eqv-font-sans); }
+    .shk__eyebrow { text-transform: uppercase; letter-spacing: .3em; font-size: .78rem;
+      font-weight: 700; color: #8FA1FF; margin: 0 0 1.4rem; }
+    .shk__status { color: #EDEFF7; font-size: clamp(1.4rem, 4vw, 2.4rem); font-weight: 800;
+      min-height: 1.2em; margin: 0 0 1.6rem; letter-spacing: -.01em; }
+    .shk__bar { height: 14px; border-radius: 999px; background: rgba(143,161,255,.14);
+      border: 1px solid rgba(143,161,255,.3); overflow: hidden; }
+    .shk__fill { height: 100%; width: 0%; border-radius: 999px;
+      background: linear-gradient(90deg, #3D57E0, #8FA1FF); box-shadow: 0 0 18px rgba(143,161,255,.6);
+      transition: width .18s ease; }
+    .shk__pct { margin-top: .9rem; font-variant-numeric: tabular-nums; color: #A9B2D6;
+      font-weight: 700; font-size: 1.1rem; }
+    .shk__log { margin: 1.8rem auto 0; max-width: 560px; text-align: left; height: 5.5em;
+      overflow: hidden; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: .82rem; line-height: 1.5; color: rgba(143,161,255,.6); }
+    .shk__done .shk__log { display: none; }
+    @media (prefers-reduced-motion: reduce) { .shk__fill { transition: none; } }
+  </style>
+</head>
+<body>
+  <main class="shk" id="shk">
+    <p class="shk__eyebrow">EQV Secure Uplink</p>
+    <p class="shk__status" id="status" aria-live="polite">Extracting data</p>
+    <div class="shk__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar">
+      <div class="shk__fill" id="fill"></div>
+    </div>
+    <p class="shk__pct" id="pct">0%</p>
+    <pre class="shk__log" id="log" aria-hidden="true"></pre>
+  </main>
+
+  <script>
+    (function () {
+      var fill = document.getElementById("fill");
+      var pct = document.getElementById("pct");
+      var bar = document.getElementById("bar");
+      var status = document.getElementById("status");
+      var log = document.getElementById("log");
+      var shk = document.getElementById("shk");
+
+      var lines = [
+        "> establishing secure uplink…",
+        "> bypassing firewall [OK]",
+        "> locating records…",
+        "> decrypting payload…",
+        "> siphoning cookies 🍪",
+        "> copying keystrokes…",
+        "> exfiltrating vibes…",
+        "> compressing archive…",
+        "> uploading to the cloud ☁️"
+      ];
+      var li = 0;
+      function pushLog() {
+        if (li < lines.length) {
+          log.textContent += lines[li++] + "\n";
+          var rows = log.textContent.split("\n");
+          if (rows.length > 4) log.textContent = rows.slice(rows.length - 5).join("\n");
+        }
+      }
+
+      var p = 0;
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var dotTimer = setInterval(function () {
+        if (p >= 100) return;
+        var dots = ".".repeat((Math.floor(Date.now() / 350) % 4));
+        status.textContent = "Extracting data" + dots;
+      }, 200);
+
+      var timer = setInterval(function () {
+        p += Math.random() * 9 + 3;
+        if (p >= 100) {
+          p = 100;
+          clearInterval(timer);
+          clearInterval(dotTimer);
+          finish();
+        }
+        if (p > (li + 1) * 11) pushLog();
+        fill.style.width = p + "%";
+        pct.textContent = Math.floor(p) + "%";
+        bar.setAttribute("aria-valuenow", Math.floor(p));
+      }, reduce ? 60 : 260);
+
+      function finish() {
+        shk.classList.add("shk__done");
+        fill.style.transition = "none";
+        fill.style.width = "100%";
+        bar.setAttribute("aria-valuenow", 100);
+        status.textContent = "Thank you for your information";
+        pct.textContent = "100%";
+        setTimeout(function () { window.location.href = "index.html"; }, 2600);
+      }
+    })();
+  </script>
+</body>
+</html>
