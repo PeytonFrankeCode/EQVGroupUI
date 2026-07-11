@@ -222,24 +222,18 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   opacity: 0; visibility: hidden; transform: translateY(18px);
   transition: opacity .4s ease, transform .4s ease, visibility 0s linear .4s;
 }
-/* Holo type: translucent glass letters with a light stroke. Each glyph
-   carries a dark blurred silhouette behind it so the busy ridgeline
-   doesn't read through the letterforms. */
+/* Semi-transparent italic quote with a slight drop shadow. */
 .eqv-hero__motto-main {
-  font-size: clamp(2.4rem, 6.5vw, 5.4rem); font-weight: 800; line-height: 1.1;
-  text-transform: uppercase; letter-spacing: .08em; margin: 0 0 1.1rem;
-  color: rgba(255, 255, 255, .14);
-  -webkit-text-stroke: 1px rgba(255, 255, 255, .5);
-  text-shadow:
-    0 0 16px rgba(5, 9, 28, .9),
-    0 0 34px rgba(5, 9, 28, .65),
-    0 0 64px rgba(170, 195, 255, .2);
+  font-size: clamp(2.4rem, 6.5vw, 5.4rem); font-weight: 700; font-style: italic;
+  line-height: 1.1; letter-spacing: .01em; margin: 0 0 1.1rem;
+  color: rgba(255, 255, 255, .58);
+  text-shadow: 0 2px 18px rgba(5, 9, 28, .55);
 }
 .eqv-hero__motto-sub {
-  color: rgba(224, 231, 255, .55); margin: 0;
+  color: rgba(224, 231, 255, .5); margin: 0;
   font-size: clamp(.95rem, 1.7vw, 1.25rem); font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase;
-  text-shadow: 0 0 14px rgba(5, 9, 28, .8);
+  text-shadow: 0 2px 14px rgba(5, 9, 28, .5);
 }
 [data-theme="dark"] .eqv-hero {
   background:
