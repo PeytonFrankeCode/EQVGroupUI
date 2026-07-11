@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json.schemastore.org/base.json",
+  "name": "EQV Group Brand Colors",
+  "description": "Exact, approved brand colors extracted from Presentation_Template_Standard_v2. Source of truth for all EQV Group work.",
+  "extracted": "2026-07-06",
+  "colors": {
+    "primary": {
+      "eqvBlue": {
+        "hex": "#0721A3",
+        "rgb": [7, 33, 163],
+        "description": "Core EQV brand blue. Cover backgrounds, accent dividers, primary buttons, links."
+      }
+    },
+    "neutral": {
+      "white": {
+        "hex": "#FFFFFF",
+        "rgb": [255, 255, 255],
+        "description": "Logo on blue, backgrounds, text on cover."
+      },
+      "black": {
+        "hex": "#000000",
+        "rgb": [0, 0, 0],
+        "description": "Footer rule, footer wordmark, primary headings."
+      },
+      "nearBlack": {
+        "hex": "#030303",
+        "rgb": [3, 3, 3],
+        "description": "Fine strokes and dense text; functionally black."
+      }
+    },
+    "gray": {
+      "gray50": {
+        "hex": "#F5F5F5",
+        "rgb": [245, 245, 245],
+        "description": "Lightest surface, subtle bands, placeholder fills."
+      },
+      "gray100": {
+        "hex": "#F2F2F2",
+        "rgb": [242, 242, 242],
+        "description": "Light surface, content bands, title-placeholder fill."
+      },
+      "gray500": {
+        "hex": "#686868",
+        "rgb": [104, 104, 104],
+        "description": "Secondary/body text, confidential footer text."
+      },
+      "gray600": {
+        "hex": "#767676",
+        "rgb": [118, 118, 118],
+        "description": "Muted text, page numbers, captions."
+      }
+    },
+    "accent": {
+      "blueWave": {
+        "hex": "#3C50B4",
+        "rgb": [60, 80, 180],
+        "description": "Decorative cover wave texture over EQV Blue. Not a general UI color."
+      }
+    }
+  }
+}
