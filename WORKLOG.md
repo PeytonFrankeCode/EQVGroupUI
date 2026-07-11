@@ -17,6 +17,6 @@ list briefly and reset it.
 3. **`/supervirushack` easter-egg page** — built, then removed at Peyton's
    request (added `supervirushack.html`, deleted it the same session).
 4. **Motto restyle** — dark-mode hero motto changed to Peyton's preferred
-   treatment: semi-transparent white, italic, wrapped in quotation marks
-   (&ldquo;Esse Quam Videri&rdquo;), with a slight drop shadow. Replaces the
-   holo/glass stroke treatment.
+   treatment: semi-transparent white, italic, with a slight drop shadow, replacing
+   the holo/glass stroke treatment. Quotation marks sit on the translation
+   ("To be, rather than to seem"); the Latin "Esse Quam Videri" is unquoted.
