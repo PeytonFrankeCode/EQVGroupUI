@@ -28,3 +28,9 @@ list briefly and reset it.
    560px in the single-column layout so it no longer clipped past its column
    (with a flatter 20deg tilt and smaller beacon tags at <=560px). Verified
    zero horizontal overflow across widths.
+6. **Replaced emoji arrows with inline SVG** — the up-right (↗) glyphs on
+   the EQV Ventures external links (menu + footer, all pages) rendered as
+   clunky blue emoji tiles on Android. Swapped every arrow (↗ and the
+   → in the hero pill / news list) for crisp currentColor inline-SVG
+   arrows via a new .eqv-extlink style, so they match the design on every
+   platform.
