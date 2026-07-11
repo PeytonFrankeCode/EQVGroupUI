@@ -20,3 +20,11 @@ list briefly and reset it.
    treatment: semi-transparent white, italic, with a slight drop shadow, replacing
    the holo/glass stroke treatment. Quotation marks sit on the translation
    ("To be, rather than to seem"); the Latin "Esse Quam Videri" is unquoted.
+5. **Mobile responsiveness pass** — reduced empty space and glitches on
+   phones: added a global `overflow-x: hidden` guard (no sideways scroll),
+   tightened section/hero/page-hero padding at <=640px, capped hero title
+   and motto sizes with vw-based clamps so big text never overflows narrow
+   screens, and fixed the 3D map — de-scaled to 1x, centered, and capped at
+   560px in the single-column layout so it no longer clipped past its column
+   (with a flatter 20deg tilt and smaller beacon tags at <=560px). Verified
+   zero horizontal overflow across widths.
