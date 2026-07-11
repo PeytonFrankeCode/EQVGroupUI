@@ -230,17 +230,14 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   opacity: 0; visibility: hidden; transform: translateY(18px);
   transition: opacity .4s ease, transform .4s ease, visibility 0s linear .4s;
 }
-/* Ghost-glass treatment: barely-there translucent fill with a faint
-   stroke and cool glow, so the motto reads as part of the night sky. */
 .eqv-hero__motto-main {
   font-size: clamp(2.4rem, 6.5vw, 5.4rem); font-weight: 800; line-height: 1.1;
-  text-transform: uppercase; letter-spacing: .08em; margin: 0 0 1.1rem;
-  color: rgba(255, 255, 255, .12);
-  -webkit-text-stroke: 1px rgba(255, 255, 255, .34);
-  text-shadow: 0 0 32px rgba(170, 195, 255, .22);
+  text-transform: uppercase; letter-spacing: .05em; margin: 0 0 1.1rem;
+  color: #fff;
+  text-shadow: 0 4px 40px rgba(4, 8, 31, .8);
 }
 .eqv-hero__motto-sub {
-  color: rgba(224, 231, 255, .42); margin: 0;
+  color: rgba(224, 231, 255, .8); margin: 0;
   font-size: clamp(.95rem, 1.7vw, 1.25rem); font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase;
 }
