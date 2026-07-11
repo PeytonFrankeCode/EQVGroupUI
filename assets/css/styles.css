@@ -185,8 +185,8 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   position: relative; min-height: 100svh; display: flex; align-items: center;
   color: #fff; overflow: hidden;
   background:
-    linear-gradient(105deg, rgba(6, 9, 25, .62) 0%, rgba(6, 9, 25, .30) 55%, rgba(6, 9, 25, .18) 100%),
-    url("../img/hero-landscape.svg") center 70% / cover no-repeat,
+    linear-gradient(100deg, rgba(6, 9, 25, .74) 0%, rgba(6, 9, 25, .42) 48%, rgba(6, 9, 25, .22) 100%),
+    url("../img/hero-light.jpg") center 42% / cover no-repeat,
     var(--eqv-navy);
 }
 .eqv-hero__content { position: relative; padding-block: 8rem 5rem; }

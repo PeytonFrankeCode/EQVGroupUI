@@ -8,10 +8,12 @@ list briefly and reset it.
 
 ## Entries
 
-1. **Light-mode hero photo (pending)** — Peyton supplied a snowy-peaks-over-
-   autumn-aspens photo to replace the drawn light-mode hero, but it's an
-   Unsplash+ watermarked preview. Waiting on a licensed/free clean file
-   before swapping it in.
+1. **Light-mode hero photo (DONE)** — after three watermarked candidates
+   (Unsplash+ snowy peaks, a stock Park City Old Town shot, a stock aerial),
+   Peyton provided a clean, watermark-free aerial of a Utah town with the
+   Wasatch range behind it. Optimized to assets/img/hero-light.jpg and set
+   as the light-mode hero background (dark left scrim keeps the headline
+   legible). Dark mode still uses hero-night.jpg.
 2. **Session worklog set up** — this file; tracks activity until Peyton asks
    for a summary, then resets.
 3. **`/supervirushack` easter-egg page** — built, then removed at Peyton's
