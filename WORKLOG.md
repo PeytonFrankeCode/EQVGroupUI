@@ -11,6 +11,11 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
+- Desktop map beacons: the office pulse rings were a fixed 32px, so on the
+  ~2x-larger desktop map they looked tiny and the pulse barely registered
+  ("map isn't animating"). Added a desktop tier (>=901px) that scales the
+  cores, rings, beams, and tags up ~1.9x so the pulse reads at desktop size;
+  mobile is unchanged. Confirmed the eqv-ping animation was always running.
 - Reconciled the history "2022-2024" milestone (1,600+ properties / 16
   basins) with the home page's 3,500+: reframed it as the early foundation
   that the later acquisitions "more than double to over 3,500 properties
