@@ -11,6 +11,10 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
+- Reconciled the history "2022-2024" milestone (1,600+ properties / 16
+  basins) with the home page's 3,500+: reframed it as the early foundation
+  that the later acquisitions "more than double to over 3,500 properties
+  today," so the two figures read as a growth story rather than a conflict.
 - Follow-up cleanup: converted the last stray ghost button (404 page "Owner
   Relations") to the clean text-link style, keeping "Go Home" as the primary
   action. Extended the dash scrub to the internal, non-served docs too
