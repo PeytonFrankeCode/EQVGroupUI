@@ -128,14 +128,14 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 }
 .eqv-burger:hover { opacity: .8; }
 .eqv-burger span {
-  display: block; width: 26px; height: 2.5px; background: currentColor; border-radius: 2px;
+  display: block; width: 26px; height: 3px; background: currentColor; border-radius: 2px;
   margin: 3px 0; transition: transform .3s ease, opacity .3s ease;
 }
 .eqv-header:not(.is-scrolled) .eqv-burger { color: #fff; }
 body.menu-open .eqv-burger { color: #fff; }
-body.menu-open .eqv-burger span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+body.menu-open .eqv-burger span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
 body.menu-open .eqv-burger span:nth-child(2) { opacity: 0; }
-body.menu-open .eqv-burger span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+body.menu-open .eqv-burger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
 /* While the menu is open, keep the header (logo + ✕) above the overlay */
 body.menu-open .eqv-header {
