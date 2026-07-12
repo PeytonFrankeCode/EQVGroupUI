@@ -11,6 +11,12 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
+- Dark-mode motto restyle: "Esse Quam Videri" is bigger and no longer italic,
+  with the E/Q/V initials popping in bright white (with a soft glow) while the
+  remaining letters sit back in a muted periwinkle, so the brand reads out of
+  the phrase. The translation below is now a larger, more prominent italic
+  quote (dropped the small uppercase/wide-tracking treatment). Mobile overrides
+  updated to match.
 - Full em-dash (and en-dash) scrub across every served page + CSS/JS: titles and
   OG tags now use "Page | EQV Group"; datelines use a period; label/heading
   separators became commas, colons, or parentheses; en-dashes ("2022-2024",

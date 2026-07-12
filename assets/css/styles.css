@@ -246,17 +246,23 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   opacity: 0; visibility: hidden; transform: translateY(18px);
   transition: opacity .4s ease, transform .4s ease, visibility 0s linear .4s;
 }
-/* Semi-transparent italic quote with a slight drop shadow. */
+/* Motto: the remaining letters sit back in a soft periwinkle shade while the
+   E-Q-V initials pop in bright white, spelling the brand. */
 .eqv-hero__motto-main {
-  font-size: clamp(2.4rem, 6.5vw, 5.4rem); font-weight: 700; font-style: italic;
-  line-height: 1.1; letter-spacing: .01em; margin: 0 0 1.1rem;
-  color: rgba(255, 255, 255, .58);
+  font-size: clamp(2.9rem, 7.4vw, 6.2rem); font-weight: 700; font-style: normal;
+  line-height: 1.08; letter-spacing: .01em; margin: 0 0 1.4rem;
+  color: rgba(180, 192, 236, .5);
   text-shadow: 0 2px 18px rgba(5, 9, 28, .55);
 }
+.eqv-hero__motto-main .eqv-motto-initial {
+  color: #fff; font-weight: 800;
+  text-shadow: 0 0 30px rgba(120, 143, 255, .6), 0 2px 18px rgba(5, 9, 28, .55);
+}
+/* The translation below reads as a prominent italic quote. */
 .eqv-hero__motto-sub {
-  color: rgba(224, 231, 255, .5); margin: 0;
-  font-size: clamp(.95rem, 1.7vw, 1.25rem); font-weight: 600;
-  letter-spacing: .3em; text-transform: uppercase;
+  color: rgba(226, 232, 255, .82); margin: 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem); font-weight: 500; font-style: italic;
+  letter-spacing: .01em; text-transform: none;
   text-shadow: 0 2px 14px rgba(5, 9, 28, .5);
 }
 [data-theme="dark"] .eqv-hero {
@@ -640,8 +646,8 @@ details.eqv-faq .eqv-faq__a p { margin: 0 0 .6rem; }
 
   /* Keep big display text from overflowing narrow screens */
   .eqv-hero__title { font-size: clamp(2.5rem, 13vw, 3.6rem); overflow-wrap: break-word; }
-  .eqv-hero__motto-main { font-size: clamp(1.9rem, 9vw, 3rem); }
-  .eqv-hero__motto-sub { font-size: .8rem; letter-spacing: .2em; }
+  .eqv-hero__motto-main { font-size: clamp(2.2rem, 9.5vw, 3.3rem); }
+  .eqv-hero__motto-sub { font-size: 1.05rem; letter-spacing: .01em; }
   .eqv-hero__motto-reveal { padding-inline: 1.25rem; padding-bottom: 12vh; }
   .eqv-h2, .eqv-page-hero h1 { overflow-wrap: break-word; }
 }
