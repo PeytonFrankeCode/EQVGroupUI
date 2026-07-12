@@ -11,6 +11,25 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
+- Full em-dash (and en-dash) scrub across every served page + CSS/JS: titles and
+  OG tags now use "Page | EQV Group"; datelines use a period; label/heading
+  separators became commas, colons, or parentheses; en-dashes ("2022-2024",
+  "Grayburg-San Andres") became hyphens. Verified zero em/en dashes remain in
+  served files (brand/ and design-system/ are internal, not served).
+- Menu bars (burger): thicker and more proportional per the Blackstone
+  reference — wider (18px→26px) and heavier (2px→2.5px) with matched open-state
+  transforms.
+- Map overhaul:
+  - Rewrote each active-state description from the acquisition history (TX, OK,
+    NM, LA, MS) and combined it with office detail in the info panel. Offices
+    now carry roles: Dallas = Corporate Headquarters, Oklahoma City = Operations
+    and Administration, Houston = Satellite Office.
+  - North Dakota, Montana, Wyoming, Colorado are now NON-clickable, rendered in
+    a muted mid-blue "non-operated interests" shade (new `.eqv-geo.is-nonop`).
+    Clickable states are only where EQV has active operations.
+  - Legend updated to three keys: Active Operations, Non-Operated Interests,
+    EQV Offices (added `.eqv-swatch--nonop`).
+
 - Wired real PDF links into the five owner-document cards on eqv-operating.html
   (removing the "coming soon" placeholders): ACH and Address Changes, Direct
   Deposit, and Change of Address all point to the EnergyLink instructions PDF;

@@ -1,4 +1,4 @@
-/* EQV Group — site behavior: theme, menu, header, reveals, counters, map */
+/* EQV Group site behavior: theme, menu, header, reveals, counters, map */
 (function () {
   "use strict";
 
@@ -97,7 +97,7 @@
     });
   }
 
-  /* ---------- Contact form (mailto compose — no backend on static host) ---------- */
+  /* ---------- Contact form (mailto compose, no backend on static host) ---------- */
   var contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -117,24 +117,27 @@
   var mapEl = document.getElementById("usMap");
   if (!mapEl || !window.EQV_US_MAP) return;
 
-  // Active-asset states (highlighted) and states with EQV offices (beacons).
-  // NOTE: sample footprint drawn from the current site — replace with client data.
+  // States with active EQV operations (clickable). Short descriptions are
+  // drawn from the acquisition history; offices carry a role for the panel.
   var ASSETS = {
-    MT:"Active producing assets", ND:"Active producing assets", WY:"Active producing assets",
-    CO:"Active producing assets", NM:"Active producing assets",
-    OK:"Operated portfolio — Western Oklahoma focus", TX:"Operated portfolio — Texas Panhandle focus",
-    LA:"Active producing assets", MS:"Active producing assets"
+    TX:"Operated assets across the Delaware Basin (Reeves and Loving counties), the Texas Panhandle (Anadarko Basin), East Texas, and the Gulf Coast.",
+    OK:"Long-life conventional production in the Anadarko Basin of western Oklahoma.",
+    NM:"Northwest Shelf of the Permian Basin: roughly 1,600 producing wells across Eddy and Lea counties.",
+    LA:"Stacked-pay natural gas across North Louisiana, including the Cotton Valley and Haynesville.",
+    MS:"Oil from the Tuscaloosa Marine Shale plus conventional gas in southwest Mississippi."
   };
+  // Non-operated interest states: shown in a muted shade, not clickable.
+  var NONOP = { ND:1, MT:1, WY:1, CO:1 };
   // Offices as city points: fx/fy are fractional positions within the
   // state's bounding box (0,0 = northwest corner).
   var OFFICES = [
-    { state: "OK", label: "Oklahoma City", fx: .64, fy: .45 },
-    { state: "TX", label: "Dallas",        fx: .75, fy: .35, side: "left" },
-    { state: "TX", label: "Houston",       fx: .86, fy: .63 }
+    { state: "TX", label: "Dallas",        role: "Corporate Headquarters",        fx: .75, fy: .35, side: "left" },
+    { state: "OK", label: "Oklahoma City", role: "Operations and Administration", fx: .64, fy: .45 },
+    { state: "TX", label: "Houston",       role: "Satellite Office",              fx: .86, fy: .63 }
   ];
   var OFFICE_BY_STATE = {};
   OFFICES.forEach(function (o) {
-    (OFFICE_BY_STATE[o.state] = OFFICE_BY_STATE[o.state] || []).push(o.label);
+    (OFFICE_BY_STATE[o.state] = OFFICE_BY_STATE[o.state] || []).push(o.label + ": " + o.role);
   });
 
   var scene = document.getElementById("mapScene");
@@ -168,14 +171,14 @@
     var hasOps = !!ASSETS[abbr];
     var path = document.createElementNS(SVG_NS, "path");
     path.setAttribute("d", window.EQV_US_MAP[abbr][1]);
-    path.setAttribute("class", "eqv-geo" + (hasOps ? " is-asset" : " is-inert"));
+    path.setAttribute("class", "eqv-geo " + (hasOps ? "is-asset" : (NONOP[abbr] ? "is-nonop" : "is-inert")));
     path.dataset.abbr = abbr;
 
-    // Only states where EQV has operations are interactive.
+    // Only states where EQV has active operations are interactive.
     if (hasOps) {
       path.setAttribute("tabindex", "0");
       path.setAttribute("role", "button");
-      path.setAttribute("aria-label", stateName(abbr) + " — active assets");
+      path.setAttribute("aria-label", stateName(abbr) + ", active operations");
       path.addEventListener("click", function () { select(path, abbr); });
       path.addEventListener("keydown", function (e) {
         if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(path, abbr); }
