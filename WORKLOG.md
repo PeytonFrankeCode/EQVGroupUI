@@ -36,3 +36,7 @@ list briefly and reset it.
    → in the hero pill / news list) for crisp currentColor inline-SVG
    arrows via a new .eqv-extlink style, so they match the design on every
    platform.
+7. **Careers apply link** — the Careers page primary CTA now reads "Apply
+   for a Job" and links to the EQV Paycom ATS careers portal (opens in a
+   new tab). Body copy updated from "send us your resume" to "browse our
+   open positions and apply through our careers portal".
