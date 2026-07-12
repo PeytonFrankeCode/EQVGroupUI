@@ -34,6 +34,11 @@ list briefly and reset it.
     redundant in-section heading.
   - History timeline: removed the "September 2024 — Shares trade separately"
     milestone.
+- Added five acquisition milestones to the history timeline (chronological):
+  Q4 2024 Delaware Basin (West Texas), Q4 2024 Texas Panhandle / Anadarko
+  Basin, Q4 2025 East Texas & North Louisiana, Q4 2025 South Texas &
+  Mississippi / Tuscaloosa Marine Shale, and Q3 2026 Northwest Shelf (Southern
+  New Mexico) — client-supplied copy, lightly condensed to the timeline style.
 - Open/handed-back: couldn't reproduce the "desktop looks squished" report — the
   home page renders correctly at 1440px in headless Chromium. Map CSS animations
   run everywhere except under prefers-reduced-motion (likely why they seemed
