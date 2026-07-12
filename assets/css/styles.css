@@ -209,22 +209,28 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   text-transform: uppercase; letter-spacing: .1em;
 }
 
-/* Clean text link with a nudging arrow — replaces obvious CTA buttons */
+/* Clean text link with a nudging arrow — replaces obvious CTA buttons.
+   Base = brand colour for light sections; underline reveals on hover.
+   --light = white for the dark hero (keeps a persistent underline).
+   --back = arrow sits before the label and nudges left. */
 .eqv-textlink {
-  display: inline-flex; align-items: center; gap: .55rem;
-  color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: .01em;
-  padding-bottom: 3px; border-bottom: 1px solid rgba(255,255,255,.35);
-  transition: border-color .2s ease;
+  display: inline-flex; align-items: center; gap: .5rem;
+  color: var(--eqv-color-primary); font-weight: 700; font-size: .95rem; letter-spacing: .01em;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+  transition: border-color .2s ease, color .2s ease;
 }
 .eqv-textlink svg { width: .95em; height: .95em; transition: transform .2s ease; }
-.eqv-textlink:hover { border-color: #fff; }
+.eqv-textlink:hover { border-bottom-color: currentColor; }
 .eqv-textlink:hover svg { transform: translateX(4px); }
+.eqv-textlink--back:hover svg { transform: translateX(-4px); }
+.eqv-textlink--light { color: #fff; border-bottom-color: rgba(255,255,255,.4); }
+.eqv-textlink--light:hover { border-bottom-color: #fff; }
 .eqv-hero__title {
   font-size: clamp(3rem, 9vw, 6.5rem); letter-spacing: -0.03em; text-transform: uppercase;
   margin-bottom: 1.6rem;
 }
 .eqv-hero__statement { max-width: 46ch; font-size: clamp(1.05rem, 1.7vw, 1.3rem); color: rgba(255,255,255,.78); margin: 0 0 2.4rem; }
-.eqv-hero__cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.eqv-hero__cta { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center; }
 
 /* ---------- Dark-mode hero reveal ---------- */
 /* In dark mode the hero swaps to the night scene, the marketing copy
@@ -465,7 +471,7 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-article__meta { color: var(--eqv-color-primary); font-weight: 700; font-size: .9rem; margin: 0 0 1.4rem; }
 .eqv-article__body p { color: var(--eqv-color-text-muted); margin: 0 0 1.2rem; font-size: 1.05rem; }
 .eqv-article__body p.lead { color: var(--eqv-color-text); font-size: 1.2rem; font-weight: 550; }
-.eqv-article__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--eqv-color-border); }
+.eqv-article__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4rem; margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--eqv-color-border); }
 .eqv-article__note { font-size: .85rem; color: var(--eqv-color-text-muted); font-style: italic; }
 @media (max-width: 640px) { .eqv-news-article { grid-template-columns: 1fr; gap: .5rem; } }
 

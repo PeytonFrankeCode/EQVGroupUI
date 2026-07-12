@@ -39,6 +39,20 @@ list briefly and reset it.
   Basin, Q4 2025 East Texas & North Louisiana, Q4 2025 South Texas &
   Mississippi / Tuscaloosa Marine Shale, and Q3 2026 Northwest Shelf (Southern
   New Mexico) — client-supplied copy, lightly condensed to the timeline style.
+- Button cleanup (fewer obvious buttons): converted navigational ghost buttons
+  to clean text links with a nudging arrow — "View all news" (home), "Meet the
+  team" (history), "Our history" (team), "Contact us" (careers), and the
+  "← All news" back link on all 7 article pages. Kept true action buttons as
+  buttons: Apply for a Job, Submit Documents, Send, View the official release,
+  Go Home (404). Extended `.eqv-textlink` with `--light` (dark hero) and
+  `--back` (left-nudging) variants; added `align-items:center` to the hero-CTA
+  and article-action rows so links sit level with buttons.
+- Redundant-text sweep of the remaining pages: Contact h2 "How to get in touch"
+  → "Direct lines" (was echoing the hero "Get in Touch" eyebrow); Careers body
+  "proven energy assets" → "predictable, cash-flowing energy assets" (the hero
+  already says "Proven … proven people"); Home overview second paragraph
+  reworded so it no longer also opens with "The EQV Group." News index and
+  History hero reviewed — no redundancy worth changing.
 - Open/handed-back: couldn't reproduce the "desktop looks squished" report — the
   home page renders correctly at 1440px in headless Chromium. Map CSS animations
   run everywhere except under prefers-reduced-motion (likely why they seemed
