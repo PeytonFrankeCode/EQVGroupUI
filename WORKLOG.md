@@ -11,6 +11,16 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
+- Hero headline: changed "Proven Energy Assets" to "Redefining Energy
+  Investment" (stacked three lines); tuned the mobile hero font so the long
+  words don't break mid-word. (Note: "Proven Energy Assets" still lives in the
+  footer tagline and the browser/OG title -- left for now, pending a call on
+  whether to retire it there too.)
+- Fixed iOS over-scroll / white space at the bottom of most pages: overflow-x
+  was on body but not html (a known iOS phantom-scroll trigger). Switched both
+  html and body to overflow-x: clip, which contains sideways overflow without
+  creating a scroll container (so it can't add phantom height or break the
+  map's sticky panel). Verified no layout regression (footer still flush).
 - Desktop map beacons: the office pulse rings were a fixed 32px, so on the
   ~2x-larger desktop map they looked tiny and the pulse barely registered
   ("map isn't animating"). Added a desktop tier (>=901px) that scales the

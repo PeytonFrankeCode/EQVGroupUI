@@ -54,7 +54,7 @@
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
 body {
   margin: 0;
   font-family: var(--eqv-font-sans);
@@ -63,7 +63,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background-color .35s ease, color .35s ease;
-  overflow-x: hidden; /* guard against any element causing sideways scroll on phones */
+  overflow-x: clip; /* contain sideways overflow without adding phantom scroll on iOS */
 }
 img, svg { max-width: 100%; }
 a { color: var(--eqv-color-link); text-decoration: none; }
@@ -670,7 +670,7 @@ details.eqv-faq .eqv-faq__a p { margin: 0 0 .6rem; }
   .eqv-page-hero { padding: clamp(6.5rem, 22vw, 9rem) 0 clamp(2.5rem, 9vw, 3.5rem); }
 
   /* Keep big display text from overflowing narrow screens */
-  .eqv-hero__title { font-size: clamp(2.5rem, 13vw, 3.6rem); overflow-wrap: break-word; }
+  .eqv-hero__title { font-size: clamp(2.1rem, 11vw, 3rem); overflow-wrap: break-word; }
   .eqv-hero__motto-main { font-size: clamp(2.2rem, 9.5vw, 3.3rem); }
   .eqv-hero__motto-sub { font-size: 1.05rem; letter-spacing: .01em; }
   .eqv-hero__motto-reveal { padding-inline: 1.25rem; padding-bottom: 12vh; }
