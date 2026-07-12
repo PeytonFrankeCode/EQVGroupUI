@@ -121,7 +121,7 @@
   // NOTE: sample footprint drawn from the current site — replace with client data.
   var ASSETS = {
     MT:"Active producing assets", ND:"Active producing assets", WY:"Active producing assets",
-    UT:"Active producing assets", CO:"Active producing assets", NM:"Active producing assets",
+    CO:"Active producing assets", NM:"Active producing assets",
     OK:"Operated portfolio — Western Oklahoma focus", TX:"Operated portfolio — Texas Panhandle focus",
     LA:"Active producing assets", MS:"Active producing assets"
   };

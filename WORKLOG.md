@@ -65,3 +65,5 @@ list briefly and reset it.
 9. **Removed Park City office from the map** — office beacons are now
    Oklahoma City, Dallas, and Houston only, matching the careers-page
    locations. (Utah remains shaded as an asset state per existing data.)
+10. **Un-highlighted Utah on the map** — removed UT from the active-asset
+    states, so it's no longer shaded or clickable.
