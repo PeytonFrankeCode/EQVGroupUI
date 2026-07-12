@@ -11,4 +11,9 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
-_(none yet since reset)_
+- Wired real PDF links into the five owner-document cards on eqv-operating.html
+  (removing the "coming soon" placeholders): ACH and Address Changes, Direct
+  Deposit, and Change of Address all point to the EnergyLink instructions PDF;
+  W-9 → W-9 blank PDF; Affidavit of Heirship → heirship PDF. All open in a new
+  tab with the external-link arrow. Added a `.eqv-doc-card .eqv-extlink` CSS
+  rule so the arrow sits flush-right and tints on hover.

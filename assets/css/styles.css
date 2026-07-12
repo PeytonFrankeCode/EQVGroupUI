@@ -476,6 +476,8 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   font-size: .68rem; font-weight: 800; letter-spacing: .05em;
 }
 .eqv-doc-card small { display: block; font-weight: 500; color: var(--eqv-color-text-muted); font-size: .82rem; }
+.eqv-doc-card .eqv-extlink { margin-left: auto; width: 1em; height: 1em; color: var(--eqv-color-text-muted); }
+.eqv-doc-card:hover .eqv-extlink { color: var(--eqv-color-primary); }
 
 /* ---------- FAQ ---------- */
 .eqv-faq-cats { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
