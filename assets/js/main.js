@@ -128,7 +128,6 @@
   // Offices as city points: fx/fy are fractional positions within the
   // state's bounding box (0,0 = northwest corner).
   var OFFICES = [
-    { state: "UT", label: "Park City",     fx: .51, fy: .27 },
     { state: "OK", label: "Oklahoma City", fx: .64, fy: .45 },
     { state: "TX", label: "Dallas",        fx: .75, fy: .35, side: "left" },
     { state: "TX", label: "Houston",       fx: .86, fy: .63 }

@@ -62,3 +62,6 @@ list briefly and reset it.
      them instead of the old external sites. Each internal page has a
      summary + a "View the official release" link to the source; full release
      text can be pasted in when available.
+9. **Removed Park City office from the map** — office beacons are now
+   Oklahoma City, Dallas, and Houston only, matching the careers-page
+   locations. (Utah remains shaded as an asset state per existing data.)
