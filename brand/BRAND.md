@@ -1,4 +1,4 @@
-# EQV Group — Brand Colors
+# EQV Group: Brand Colors
 
 The official color palette for the eqvgroup.com redesign, extracted from the
 company presentation template ([`Presentation_Template_Standard_v2.pdf`](./Presentation_Template_Standard_v2.pdf)).
@@ -36,8 +36,8 @@ values.
 
 ## Accessibility
 
-- Brand Blue `#0721A3` on white → contrast ratio **≈ 11.6:1** — passes WCAG AAA
+- Brand Blue `#0721A3` on white → contrast ratio **≈ 11.6:1**, passes WCAG AAA
   for normal text. Safe for links and body-weight text on white.
 - White on Brand Blue → same ratio; safe for reversed text and the reversed logo.
-- Body Grey `#686868` on white → **≈ 5.3:1** — passes AA for normal text; use
+- Body Grey `#686868` on white → **≈ 5.3:1**, passes AA for normal text; use
   for secondary/caption copy, not for the smallest legal type on light grey.

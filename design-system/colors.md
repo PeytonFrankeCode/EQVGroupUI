@@ -1,4 +1,4 @@
-# EQV Group — Brand Color Standard
+# EQV Group: Brand Color Standard
 
 > **Source of truth.** These colors are extracted directly from the official
 > `Presentation_Template_Standard_v2` brand template and are the **exact,
@@ -46,7 +46,7 @@ that supports it.
 
 | Token | Hex | RGB | Usage |
 |-------|-----|-----|-------|
-| **Blue Wave** | `#3C50B4` | `60, 80, 180` | The lighter blue produced by the cover's decorative wave texture overlaid on EQV Blue. Use only to reproduce that gradient/texture effect — **not** a general-purpose UI color. |
+| **Blue Wave** | `#3C50B4` | `60, 80, 180` | The lighter blue produced by the cover's decorative wave texture overlaid on EQV Blue. Use only to reproduce that gradient/texture effect, **not** a general-purpose UI color. |
 
 ---
 

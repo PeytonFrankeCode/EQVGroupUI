@@ -1,4 +1,4 @@
-# EQV Group Redesign — Notes & Feature Ideas
+# EQV Group Redesign, Notes & Feature Ideas
 
 Running list of client direction and feature requests for the eqvgroup.com
 redesign. Add to this as ideas come up.
@@ -6,7 +6,7 @@ redesign. Add to this as ideas come up.
 ## Guiding principles
 
 - **This is a UI refresh, not a rebuild.** Keep ALL existing information and
-  preserve every original function of the current site — we are only updating
+  preserve every original function of the current site, we are only updating
   the look/feel and layout.
 - **Design language:** use the brand template (`brand/Presentation_Template_Standard_v2.pdf`).
   Palette = nice **blue** (`#0721A3`), **grey** (`#F5F5F5` / `#F2F2F2`), and
@@ -23,13 +23,13 @@ redesign. Add to this as ideas come up.
 - Implemented (2026-07-05) on `team.html` ("Our Team") together with the
   executive management section: center-line alternating timeline, seven
   milestones (founding through NYSE: FTW), scroll-revealed. Exec bios are
-  drawn from SEC filings — confirm titles/bios with client and add photos.
+  drawn from SEC filings, confirm titles/bios with client and add photos.
 - Content to plot along the timeline:
   - Company **founding(s)** (EQV Group 2022; the SPACs; entity milestones)
   - **Acquisitions** (14+ completed)
   - **Stats over time**: production volume (e.g. 25,233 boe/d net 2024),
     assets under management, well count (1,600 → 1,800+), states/basins.
-- (Data points available in `eqvgroup-research.md` — confirm current figures
+- (Data points available in `eqvgroup-research.md`, confirm current figures
   with client.)
 
 ### 2. Interactive map
@@ -46,12 +46,12 @@ redesign. Add to this as ideas come up.
 ### 3. Dark mode
 - Add a **dark mode toggle**.
 - Easter egg: when dark mode is switched on, reveal the **hidden meaning** of
-  the company name — **"Esse Quam Videri"** (Latin, "to be, rather than to
-  seem" — what EQV stands for).
+  the company name, **"Esse Quam Videri"** (Latin, "to be, rather than to
+  seem", what EQV stands for).
 - Client direction (2026-07-03): do NOT render it as background text; it
   shows as a small tagline **directly under the EQV logo** in the header,
   dark mode only.
-- Client direction (2026-07-05): in dark mode the front-page hero transforms —
+- Client direction (2026-07-05): in dark mode the front-page hero transforms -
   the headline/description/buttons fade out, the background swaps to a darker
   night scene, and "Esse Quam Videri" fades in with its meaning ("To be,
   rather than to seem") beneath it. Implemented with the client's dark
@@ -62,9 +62,9 @@ redesign. Add to this as ideas come up.
   questions in `eqvgroup-research.md`).
 - **PDF documents**: the owner-forms cards on `eqv-operating.html` (W-9,
   Direct Deposit, Change of Address, Affidavit of Heirship, ACH instructions)
-  point to `#` placeholders — get the real PDFs from the client and drop them
+  point to `#` placeholders, get the real PDFs from the client and drop them
   in `assets/docs/`.
-- **Careers page**: built with generic copy — the live site's Careers page was
+- **Careers page**: built with generic copy, the live site's Careers page was
   never captured; replace with real content when available.
 - **Contact form**: static host, so submit composes a pre-filled email
   (mailto) to contact@eqvoperating.com. Upgrade path: a small Cloudflare

@@ -1,12 +1,12 @@
 /*
- * EQV Group — Brand color tokens
+ * EQV Group: Brand color tokens
  * Source: brand/Presentation_Template_Standard_v2.pdf
  * See brand/BRAND.md for usage notes and accessibility ratios.
  */
 
 :root {
   /* Core palette */
-  --eqv-brand-blue: #0721A3; /* primary — hero fills, buttons, links, accents */
+  --eqv-brand-blue: #0721A3; /* primary: hero fills, buttons, links, accents */
   --eqv-ink: #000000;        /* logo wordmark, headings, footer rules */
   --eqv-white: #FFFFFF;      /* page background, reversed logo */
 
