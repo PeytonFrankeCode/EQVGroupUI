@@ -124,18 +124,24 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 .eqv-burger {
   width: 40px; height: 40px; border-radius: 8px;
   border: 0; background: transparent; color: var(--eqv-color-text); cursor: pointer;
-  display: grid; place-items: center; gap: 0; position: relative; z-index: 210;
+  position: relative; z-index: 210;
 }
 .eqv-burger:hover { opacity: .8; }
+/* All three bars are centered on the same point; the closed hamburger just
+   offsets the top/bottom bars. On open they rotate in place and cross exactly. */
 .eqv-burger span {
-  display: block; width: 26px; height: 3px; background: currentColor; border-radius: 2px;
-  margin: 3px 0; transition: transform .3s ease, opacity .3s ease;
+  position: absolute; top: 50%; left: 50%;
+  width: 26px; height: 3px; margin: -1.5px 0 0 -13px;
+  background: currentColor; border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
 }
+.eqv-burger span:nth-child(1) { transform: translateY(-8px); }
+.eqv-burger span:nth-child(3) { transform: translateY(8px); }
 .eqv-header:not(.is-scrolled) .eqv-burger { color: #fff; }
 body.menu-open .eqv-burger { color: #fff; }
-body.menu-open .eqv-burger span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+body.menu-open .eqv-burger span:nth-child(1) { transform: rotate(45deg); }
 body.menu-open .eqv-burger span:nth-child(2) { opacity: 0; }
-body.menu-open .eqv-burger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+body.menu-open .eqv-burger span:nth-child(3) { transform: rotate(-45deg); }
 
 /* While the menu is open, keep the header (logo + ✕) above the overlay */
 body.menu-open .eqv-header {
