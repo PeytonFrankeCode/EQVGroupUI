@@ -7,3 +7,7 @@
 
 # Build output (legacy GitHub Pages assembly)
 _site/
+
+# Local tooling (screenshots, etc.)
+node_modules/
+package-lock.json

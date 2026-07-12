@@ -190,19 +190,35 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
     var(--eqv-navy);
 }
 .eqv-hero__content { position: relative; padding-block: 8rem 5rem; }
+/* Latest-news banner: a soft translucent strip, not an outlined pill —
+   blends into the hero while the frosted background keeps it legible. */
 .eqv-hero__pill {
-  display: inline-flex; align-items: center; gap: .65rem;
-  border: 1px solid rgba(255,255,255,.22); border-radius: var(--eqv-radius-pill);
-  padding: .45rem 1.1rem .45rem .5rem; color: rgba(255,255,255,.9);
+  display: inline-flex; align-items: center; gap: .75rem;
+  border: 0; border-radius: 10px;
+  padding: .5rem 1rem .5rem .55rem; color: rgba(255,255,255,.92);
   font-size: .85rem; font-weight: 600; margin-bottom: 2.2rem;
-  background: rgba(255,255,255,.06); backdrop-filter: blur(6px);
-  transition: border-color .2s ease, background .2s ease;
+  background: rgba(255,255,255,.08);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: background .2s ease, transform .2s ease;
 }
-.eqv-hero__pill:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.1); }
+.eqv-hero__pill:hover { background: rgba(255,255,255,.14); transform: translateY(-1px); }
+.eqv-hero__pill .eqv-extlink { color: rgba(255,255,255,.7); }
 .eqv-hero__pill-tag {
-  background: var(--eqv-blue-bright); color: #fff; border-radius: var(--eqv-radius-pill);
-  padding: .18rem .7rem; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em;
+  background: var(--eqv-blue-bright); color: #fff; border-radius: 6px;
+  padding: .2rem .6rem; font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
 }
+
+/* Clean text link with a nudging arrow — replaces obvious CTA buttons */
+.eqv-textlink {
+  display: inline-flex; align-items: center; gap: .55rem;
+  color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: .01em;
+  padding-bottom: 3px; border-bottom: 1px solid rgba(255,255,255,.35);
+  transition: border-color .2s ease;
+}
+.eqv-textlink svg { width: .95em; height: .95em; transition: transform .2s ease; }
+.eqv-textlink:hover { border-color: #fff; }
+.eqv-textlink:hover svg { transform: translateX(4px); }
 .eqv-hero__title {
   font-size: clamp(3rem, 9vw, 6.5rem); letter-spacing: -0.03em; text-transform: uppercase;
   margin-bottom: 1.6rem;
@@ -272,12 +288,6 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-btn--outline:hover { border-color: #fff; }
 .eqv-btn--ghost { border-color: var(--eqv-color-primary); color: var(--eqv-color-primary); background: transparent; }
 .eqv-btn--ghost:hover { background: var(--eqv-color-primary); color: #fff; }
-.eqv-header__contact {
-  padding: .65rem 1.5rem;
-  background: transparent; color: currentColor;
-  border-color: currentColor;
-}
-.eqv-header__contact:hover { box-shadow: none; background: rgba(127, 127, 127, .12); }
 
 /* ---------- Overview ---------- */
 .eqv-overview { max-width: 900px; }
@@ -605,7 +615,6 @@ details.eqv-faq .eqv-faq__a p { margin: 0 0 .6rem; }
   .eqv-map { max-width: 560px; margin-inline: auto; }
 }
 @media (max-width: 640px) {
-  .eqv-header__contact { display: none; }
   .eqv-stats { grid-template-columns: 1fr; }
   .eqv-stat { padding: 1.4rem 1.25rem; }
   .eqv-news-item { grid-template-columns: 1fr; gap: .4rem; }
