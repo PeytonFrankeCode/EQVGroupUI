@@ -111,7 +111,7 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 .eqv-header:not(.is-scrolled) .eqv-logo,
 .eqv-header:not(.is-scrolled) .eqv-theme-toggle { color: #fff; }
 .eqv-header__inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; }
-.eqv-header__actions { display: flex; align-items: center; gap: .9rem; }
+.eqv-header__actions { display: flex; align-items: center; gap: 1.4rem; }
 
 .eqv-theme-toggle {
   width: 42px; height: 42px; border-radius: 50%; border: 1px solid currentColor;
