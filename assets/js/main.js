@@ -128,10 +128,10 @@
   // Offices as city points: fx/fy are fractional positions within the
   // state's bounding box (0,0 = northwest corner).
   var OFFICES = [
-    { state: "UT", label: "EQV Office — Park City",     fx: .51, fy: .27 },
-    { state: "OK", label: "EQV Office — Oklahoma City", fx: .64, fy: .45 },
-    { state: "TX", label: "EQV Office — Dallas",        fx: .75, fy: .35, side: "left" },
-    { state: "TX", label: "EQV Office — Houston",       fx: .86, fy: .63 }
+    { state: "UT", label: "Park City",     fx: .51, fy: .27 },
+    { state: "OK", label: "Oklahoma City", fx: .64, fy: .45 },
+    { state: "TX", label: "Dallas",        fx: .75, fy: .35, side: "left" },
+    { state: "TX", label: "Houston",       fx: .86, fy: .63 }
   ];
   var OFFICE_BY_STATE = {};
   OFFICES.forEach(function (o) {
@@ -166,26 +166,32 @@
   }
 
   Object.keys(window.EQV_US_MAP).forEach(function (abbr) {
+    var hasOps = !!ASSETS[abbr];
     var path = document.createElementNS(SVG_NS, "path");
     path.setAttribute("d", window.EQV_US_MAP[abbr][1]);
-    path.setAttribute("class", "eqv-geo" + (ASSETS[abbr] ? " is-asset" : ""));
-    path.setAttribute("tabindex", "0");
-    path.setAttribute("role", "button");
-    path.setAttribute("aria-label", stateName(abbr) + (ASSETS[abbr] ? " — active assets" : ""));
+    path.setAttribute("class", "eqv-geo" + (hasOps ? " is-asset" : " is-inert"));
     path.dataset.abbr = abbr;
 
-    path.addEventListener("click", function () { select(path, abbr); });
-    path.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(path, abbr); }
-    });
-    path.addEventListener("mouseenter", function () {
-      if (!tip) return;
-      tip.textContent = stateName(abbr);
-      tip.classList.add("is-visible");
-    });
-    path.addEventListener("mouseleave", function () {
-      if (tip) tip.classList.remove("is-visible");
-    });
+    // Only states where EQV has operations are interactive.
+    if (hasOps) {
+      path.setAttribute("tabindex", "0");
+      path.setAttribute("role", "button");
+      path.setAttribute("aria-label", stateName(abbr) + " — active assets");
+      path.addEventListener("click", function () { select(path, abbr); });
+      path.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(path, abbr); }
+      });
+      path.addEventListener("mouseenter", function () {
+        if (!tip) return;
+        tip.textContent = stateName(abbr);
+        tip.classList.add("is-visible");
+      });
+      path.addEventListener("mouseleave", function () {
+        if (tip) tip.classList.remove("is-visible");
+      });
+    } else {
+      path.setAttribute("aria-hidden", "true");
+    }
     mapEl.appendChild(path);
   });
 
