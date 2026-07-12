@@ -11,6 +11,10 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
+- Retired "Proven Energy Assets" as the tagline: footer tagline on all 15
+  pages and the home browser/OG title now read "Redefining Energy Investment."
+  Left the Careers recruiting line ("Proven energy assets need proven people")
+  intact as a separate play on words.
 - Hero headline: changed "Proven Energy Assets" to "Redefining Energy
   Investment" (stacked three lines); tuned the mobile hero font so the long
   words don't break mid-word. (Note: "Proven Energy Assets" still lives in the
