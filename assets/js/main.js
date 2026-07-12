@@ -113,6 +113,32 @@
     });
   }
 
+  /* ---------- Timeline: draw the center line down as you scroll ---------- */
+  var timeline = document.querySelector(".eqv-timeline");
+  if (timeline) {
+    var tlReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (tlReduce) {
+      timeline.style.setProperty("--eqv-tl-progress", "1");
+    } else {
+      var tlTick = false;
+      var setTimelineProgress = function () {
+        tlTick = false;
+        var rect = timeline.getBoundingClientRect();
+        // Anchor a little below the viewport middle; the fill tracks it through the list.
+        var anchor = window.innerHeight * 0.58;
+        var p = (anchor - rect.top) / rect.height;
+        p = p < 0 ? 0 : (p > 1 ? 1 : p);
+        timeline.style.setProperty("--eqv-tl-progress", p.toFixed(4));
+      };
+      var onTlScroll = function () {
+        if (!tlTick) { tlTick = true; requestAnimationFrame(setTimelineProgress); }
+      };
+      setTimelineProgress();
+      window.addEventListener("scroll", onTlScroll, { passive: true });
+      window.addEventListener("resize", onTlScroll);
+    }
+  }
+
   /* ---------- Interactive holographic 3D US map ---------- */
   var mapEl = document.getElementById("usMap");
   if (!mapEl || !window.EQV_US_MAP) return;

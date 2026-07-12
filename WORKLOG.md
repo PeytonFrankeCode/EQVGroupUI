@@ -11,6 +11,12 @@ list briefly and reset it.
   full press-release text when available.
 
 ## Entries
+- Timeline draw-down animation (history page): the center line is now a faint
+  track with a bright brand-blue fill whose height is driven by scroll progress,
+  so the line "draws down" as you scroll while milestones reveal on entry.
+  JS computes progress against a viewport anchor (rAF-throttled); reduced-motion
+  users get the full line immediately. Placed the handler before the map's early
+  return so it runs on the map-less history page.
 - Dark-mode motto restyle: "Esse Quam Videri" is bigger and no longer italic,
   with the E/Q/V initials popping in bright white (with a soft glow) while the
   remaining letters sit back in a muted periwinkle, so the brand reads out of
