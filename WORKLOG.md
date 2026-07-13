@@ -21,4 +21,10 @@ menu-bar + iOS fixes, and the full dash scrub).*
 - Awaiting client assets: hero video, final logo.
 
 ## Entries
+- Light-mode hero video: added the client's clip as an autoplaying, muted,
+  looping background (behind a scrim, under the content). Transcoded the 28MB
+  source to a 2.8MB MP4 + 2.4MB WebM (720p, no audio, faststart) and extracted
+  a poster frame. Moved the hero gradient into a ::before overlay so it sits
+  above the video; dark mode hides the video and keeps the night image + motto.
+  Reduced-motion users get the static poster (JS pauses it).
 _(none yet since reset)_

@@ -19,6 +19,14 @@
     });
   }
 
+  /* ---------- Hero video: respect reduced motion (show the poster instead) ---------- */
+  var heroVideo = document.querySelector(".eqv-hero__video");
+  if (heroVideo && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    heroVideo.removeAttribute("autoplay");
+    heroVideo.pause();
+    try { heroVideo.currentTime = 0; } catch (e) {}
+  }
+
   /* ---------- Full-screen menu ---------- */
   var menuToggle = document.getElementById("menuToggle");
   var menu = document.getElementById("menu");

@@ -191,11 +191,20 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   position: relative; min-height: 100svh; display: flex; align-items: center;
   color: #fff; overflow: hidden;
   background:
-    linear-gradient(100deg, rgba(6, 9, 25, .74) 0%, rgba(6, 9, 25, .42) 48%, rgba(6, 9, 25, .22) 100%),
     url("../img/hero-light.jpg") center 42% / cover no-repeat,
     var(--eqv-navy);
 }
-.eqv-hero__content { position: relative; padding-block: 8rem 5rem; }
+/* Light-mode hero video sits over the fallback image, under the scrim + content */
+.eqv-hero__video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; pointer-events: none;
+}
+/* Dark scrim for text legibility, above the image/video */
+.eqv-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(100deg, rgba(6, 9, 25, .74) 0%, rgba(6, 9, 25, .42) 48%, rgba(6, 9, 25, .22) 100%);
+}
+.eqv-hero__content { position: relative; z-index: 2; padding-block: 8rem 5rem; }
 /* Latest-news banner: a soft translucent strip, not an outlined pill;
    blends into the hero while the frosted background keeps it legible. */
 .eqv-hero__pill {
@@ -246,7 +255,7 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-hero { transition: background .5s ease; }
 .eqv-hero__content { transition: opacity .45s ease, visibility .45s ease; }
 .eqv-hero__motto-reveal {
-  position: absolute; inset: 0; display: grid; place-content: center;
+  position: absolute; inset: 0; z-index: 2; display: grid; place-content: center;
   padding-bottom: 16vh; /* lift the motto into the calmer sky, off the ridgeline */
   text-align: center; pointer-events: none;
   opacity: 0; visibility: hidden; transform: translateY(18px);
@@ -273,9 +282,13 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 }
 [data-theme="dark"] .eqv-hero {
   background:
-    linear-gradient(105deg, rgba(3, 6, 20, .5) 0%, rgba(3, 6, 20, .2) 55%, rgba(3, 6, 20, .12) 100%),
     url("../img/hero-night.jpg") center 70% / cover no-repeat,
     var(--eqv-navy);
+}
+/* Dark mode: hide the light-mode video and swap the scrim to the night blend */
+[data-theme="dark"] .eqv-hero__video { display: none; }
+[data-theme="dark"] .eqv-hero::before {
+  background: linear-gradient(105deg, rgba(3, 6, 20, .5) 0%, rgba(3, 6, 20, .2) 55%, rgba(3, 6, 20, .12) 100%);
 }
 [data-theme="dark"] .eqv-hero { transition: background 1.8s ease; }
 [data-theme="dark"] .eqv-hero__content {
