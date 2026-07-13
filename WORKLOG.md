@@ -4,9 +4,8 @@ Running list of what Peyton asks for and what gets done, kept since the
 last summary. When Peyton asks to retrieve the session, I summarize this
 list briefly and reset it.
 
-*Log reset: 2026-07-12 (after the redesign-polish session: hero headline
-"Redefining Energy Investment", tagline retirement, map/beacon/timeline work,
-menu-bar + iOS fixes, and the full dash scrub).*
+*Log reset: 2026-07-13 (after the assets + polish session: hero video, official
+logo, interior-hero redesign, headline/tagline change, and the iOS/menu fixes).*
 
 ## Carry-over / open items
 - Internal news pages hold accurate summaries + official-source links; paste
@@ -18,25 +17,7 @@ menu-bar + iOS fixes, and the full dash scrub).*
   Professionals (50+); only the 3,500+ properties count is client-confirmed.
 - Careers hero line "Proven energy assets need proven people" still uses the
   retired phrasing; reword if the client wants it fully gone.
+- Optional: rebuild the social-share image (og.jpg) with the new branding.
 
 ## Entries
-- Interior page hero redesign: replaced the flat, saturated royal-blue banner
-  (.eqv-page-hero, used on all interior pages) with a deep navy treatment that
-  matches the home hero and footer -- layered depth glows, a subtle oversized
-  Q monogram watermark bleeding off the right (away from the text), and a soft
-  bottom hairline instead of a hard edge. Reads far more premium/professional.
-- Owner Relations page: added the second regional owner-relations inbox that
-  was only on the Contact page. The aside now lists both, labeled West Texas
-  (ownerrelations@) and East Texas & Mississippi (owner-relations@).
-- Official logo: measured the client's hi-res EQV mark and rebuilt the site's
-  vector to match it exactly (corrected the middle E arm to full width and the
-  V proportions). Updated the inline currentColor `#eqv-mark` symbol on all 15
-  pages (so it still adapts to light/dark and stays crisp) and regenerated the
-  SVG favicon + favicon-32.png + apple-touch-icon.png (white mark on brand
-  blue) from the corrected geometry. Archived the hi-res original in brand/.
-- Light-mode hero video: added the client's clip as an autoplaying, muted,
-  looping background (behind a scrim, under the content). Transcoded the 28MB
-  source to a 2.8MB MP4 + 2.4MB WebM (720p, no audio, faststart) and extracted
-  a poster frame. Moved the hero gradient into a ::before overlay so it sits
-  above the video; dark mode hides the video and keeps the night image + motto.
-  Reduced-motion users get the static poster (JS pauses it).
+_(none yet since reset)_
