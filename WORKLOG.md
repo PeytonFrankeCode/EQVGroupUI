@@ -18,7 +18,7 @@ menu-bar + iOS fixes, and the full dash scrub).*
   Professionals (50+); only the 3,500+ properties count is client-confirmed.
 - Careers hero line "Proven energy assets need proven people" still uses the
   retired phrasing; reword if the client wants it fully gone.
-- Awaiting client assets: hero video, final logo.
+- Awaiting client assets: final logo.
 
 ## Entries
 - Light-mode hero video: added the client's clip as an autoplaying, muted,
@@ -27,4 +27,3 @@ menu-bar + iOS fixes, and the full dash scrub).*
   a poster frame. Moved the hero gradient into a ::before overlay so it sits
   above the video; dark mode hides the video and keeps the night image + motto.
   Reduced-motion users get the static poster (JS pauses it).
-_(none yet since reset)_
