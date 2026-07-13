@@ -20,6 +20,11 @@ menu-bar + iOS fixes, and the full dash scrub).*
   retired phrasing; reword if the client wants it fully gone.
 
 ## Entries
+- Interior page hero redesign: replaced the flat, saturated royal-blue banner
+  (.eqv-page-hero, used on all interior pages) with a deep navy treatment that
+  matches the home hero and footer -- layered depth glows, a subtle oversized
+  Q monogram watermark bleeding off the right (away from the text), and a soft
+  bottom hairline instead of a hard edge. Reads far more premium/professional.
 - Owner Relations page: added the second regional owner-relations inbox that
   was only on the Contact page. The aside now lists both, labeled West Texas
   (ownerrelations@) and East Texas & Mississippi (owner-relations@).
