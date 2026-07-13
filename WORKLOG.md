@@ -20,6 +20,9 @@ menu-bar + iOS fixes, and the full dash scrub).*
   retired phrasing; reword if the client wants it fully gone.
 
 ## Entries
+- Owner Relations page: added the second regional owner-relations inbox that
+  was only on the Contact page. The aside now lists both, labeled West Texas
+  (ownerrelations@) and East Texas & Mississippi (owner-relations@).
 - Official logo: measured the client's hi-res EQV mark and rebuilt the site's
   vector to match it exactly (corrected the middle E arm to full width and the
   V proportions). Updated the inline currentColor `#eqv-mark` symbol on all 15
