@@ -3,6 +3,24 @@
  * Brand tokens sourced from brand/BRAND.md (Presentation_Template_Standard_v2.pdf)
  */
 
+/* ---------- Web font (self-hosted, variable) ----------
+   Inter stands in for the brand's Aptos (a Microsoft font not available to most
+   browsers). Swap these files for licensed Aptos web fonts to match exactly. */
+@font-face {
+  font-family: "Inter var";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter var";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-latin-var-italic.woff2") format("woff2");
+}
+
 /* ---------- Design tokens ---------- */
 :root {
   /* Core palette */
@@ -30,8 +48,8 @@
   --eqv-footer-bg: var(--eqv-navy);
 
   /* Type & layout */
-  --eqv-font-sans: "Aptos", system-ui, -apple-system, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
+  --eqv-font-sans: "Inter var", "Aptos", system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
   --eqv-maxw: 1200px;
   --eqv-gutter: clamp(1.25rem, 4vw, 3rem);
   --eqv-radius: 12px;
@@ -67,6 +85,10 @@ body {
 }
 img, svg { max-width: 100%; }
 a { color: var(--eqv-color-link); text-decoration: none; }
+
+/* Visible keyboard focus for all interactive elements (light blue reads on
+   both the light pages and the dark hero/footer/menu). */
+:focus-visible { outline: 2px solid #6E82FF; outline-offset: 3px; }
 h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 
 /* ---------- Helpers ---------- */

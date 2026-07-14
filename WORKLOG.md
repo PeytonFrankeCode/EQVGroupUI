@@ -17,7 +17,17 @@ logo, interior-hero redesign, headline/tagline change, and the iOS/menu fixes).*
   Professionals (50+); only the 3,500+ properties count is client-confirmed.
 - Careers hero line "Proven energy assets need proven people" still uses the
   retired phrasing; reword if the client wants it fully gone.
-- Optional: rebuild the social-share image (og.jpg) with the new branding.
 
 ## Entries
-_(none yet since reset)_
+- Self-hosted web font: the CSS asked for "Aptos" (a Microsoft font most
+  browsers don't have), so the site was silently falling back to system fonts.
+  Added self-hosted Inter (variable, latin, ~99KB for normal+italic) via
+  @font-face + preload, first in the stack (Aptos/system kept as fallbacks).
+  Typography is now consistent and intentional on every device.
+- SEO: added JSON-LD Organization schema to the homepage (name, logo, address,
+  owner-relations contact, sameAs to the EQV Ventures sites).
+- Rebuilt the social-share card (og.jpg) with the new logo, deep-navy branding,
+  and the "Redefining Energy Investment" headline.
+- Refreshed sitemap lastmod dates.
+- Accessibility: added a clear site-wide keyboard focus ring (:focus-visible)
+  that reads on both light pages and the dark hero/footer/menu.
