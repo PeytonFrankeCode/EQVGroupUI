@@ -20,4 +20,7 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Timeline: the center line (track + progress fill) now renders behind the
+  milestone dots instead of on top of them, so each dot's halo cleanly breaks
+  the line (z-index on the line pseudo-elements vs the items).
 _(none yet since reset)_

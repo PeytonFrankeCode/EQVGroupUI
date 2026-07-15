@@ -643,20 +643,21 @@ details.eqv-faq .eqv-faq__a p { margin: 0 0 .6rem; }
 
 /* ---------- Timeline (center line, scroll-revealed milestones) ---------- */
 .eqv-timeline { position: relative; max-width: 940px; margin-inline: auto; padding-block: 1rem; --eqv-tl-progress: 0; }
-/* Faint full-height track */
+/* Faint full-height track (sits behind the dots) */
 .eqv-timeline::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px;
+  content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; z-index: 0;
   background: linear-gradient(180deg, transparent, var(--eqv-color-border) 8%, var(--eqv-color-border) 92%, transparent);
 }
-/* Bright fill that draws down with scroll progress (0 to 1) */
+/* Bright fill that draws down with scroll progress (0 to 1); runs behind the dots */
 .eqv-timeline::after {
-  content: ""; position: absolute; top: 0; left: 50%; width: 2px; margin-left: -1px;
+  content: ""; position: absolute; top: 0; left: 50%; width: 2px; margin-left: -1px; z-index: 0;
   height: calc(var(--eqv-tl-progress) * 100%);
   background: linear-gradient(180deg, var(--eqv-color-primary), var(--eqv-blue-bright));
   box-shadow: 0 0 12px 1px rgba(46, 75, 232, .45);
   transition: height .12s ease-out;
 }
-.eqv-tl-item { position: relative; width: 50%; padding: 0 2.6rem 2.8rem 0; text-align: right; }
+/* z-index keeps each item (and its dot + halo) above the center line */
+.eqv-tl-item { position: relative; z-index: 1; width: 50%; padding: 0 2.6rem 2.8rem 0; text-align: right; }
 .eqv-tl-item:nth-child(even) { margin-left: 50%; padding: 0 0 2.8rem 2.6rem; text-align: left; }
 .eqv-tl-item::before {
   content: ""; position: absolute; top: .35rem; right: -7px; width: 14px; height: 14px;
