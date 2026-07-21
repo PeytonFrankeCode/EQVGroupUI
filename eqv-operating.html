@@ -23,6 +23,9 @@
 </head>
 <body>
 
+  <!-- Skip link: first Tab jumps past the nav to the content -->
+  <a class="eqv-skip" href="#main">Skip to content</a>
+
   <!-- Official EQV mark (vector), reused via <use> -->
   <svg style="display:none" aria-hidden="true">
     <symbol id="eqv-mark" viewBox="0 0 859 389">
@@ -40,18 +43,34 @@
 
   <!-- Header -->
   <header class="eqv-header" id="header">
+    <!-- Tier 1: slim utility strip for the sister companies (kept up top, as requested) -->
+    <div class="eqv-header__utility">
+      <div class="eqv-container eqv-header__utility-inner">
+        <span class="eqv-header__utility-label">Our companies</span>
+        <nav class="eqv-header__nav" aria-label="EQV platform sites">
+          <a href="https://www.eqvventures.com" target="_blank" rel="noopener">EQV Ventures <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+          <a href="https://www.eqvventuresii.com" target="_blank" rel="noopener">EQV Ventures II <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+          <a href="https://www.eqvpower.com" target="_blank" rel="noopener">EQV Power <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+        </nav>
+      </div>
+    </div>
+    <!-- Tier 2: primary bar with the site's own pages made visible -->
     <div class="eqv-container eqv-header__inner">
       <a class="eqv-logo" href="index.html" aria-label="EQV Group home">
         <svg class="eqv-logo__svg"><use href="#eqv-mark"/></svg>
       </a>
-      <nav class="eqv-header__nav" aria-label="EQV platform sites">
-        <a href="https://www.eqvventures.com" target="_blank" rel="noopener">EQV Ventures <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
-        <a href="https://www.eqvventuresii.com" target="_blank" rel="noopener">EQV Ventures II <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
-        <a href="https://www.eqvpower.com" target="_blank" rel="noopener">EQV Power <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+      <nav class="eqv-header__primary" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="history.html">History</a>
+        <a href="news.html">News</a>
+        <a href="eqv-operating.html" aria-current="page">EQV Operating</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <div class="eqv-header__actions">
         <button class="eqv-theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-          <span aria-hidden="true">&#9680;</span>
+          <span aria-hidden="true">◐</span>
         </button>
         <button class="eqv-burger" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
           <span class="eqv-burger__label">Menu</span>
@@ -85,7 +104,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main">
     <!-- Page hero -->
     <section class="eqv-page-hero">
       <div class="eqv-container eqv-page-hero__inner">

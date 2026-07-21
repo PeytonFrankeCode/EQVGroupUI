@@ -713,11 +713,6 @@ details.eqv-faq .eqv-faq__a p { margin: 0 0 .6rem; }
   padding: 1.8rem 1.6rem; border-radius: var(--eqv-radius);
   background: var(--eqv-color-surface); border: 1px solid var(--eqv-color-border);
 }
-.eqv-person__avatar {
-  width: 60px; height: 60px; border-radius: 50%; margin-bottom: 1.1rem;
-  display: grid; place-items: center; font-weight: 800; font-size: 1.15rem;
-  background: linear-gradient(150deg, var(--eqv-brand-blue), #3B50B4); color: #fff;
-}
 .eqv-person h3 { font-size: 1.2rem; margin-bottom: .2rem; }
 .eqv-person .role {
   display: block; text-transform: uppercase; letter-spacing: .12em;

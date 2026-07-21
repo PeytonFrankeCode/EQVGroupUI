@@ -23,6 +23,9 @@
 </head>
 <body>
 
+  <!-- Skip link: first Tab jumps past the nav to the content -->
+  <a class="eqv-skip" href="#main">Skip to content</a>
+
   <!-- Official EQV mark (vector), reused via <use> -->
   <svg style="display:none" aria-hidden="true">
     <symbol id="eqv-mark" viewBox="0 0 859 389">
@@ -40,18 +43,34 @@
 
   <!-- Header -->
   <header class="eqv-header" id="header">
+    <!-- Tier 1: slim utility strip for the sister companies (kept up top, as requested) -->
+    <div class="eqv-header__utility">
+      <div class="eqv-container eqv-header__utility-inner">
+        <span class="eqv-header__utility-label">Our companies</span>
+        <nav class="eqv-header__nav" aria-label="EQV platform sites">
+          <a href="https://www.eqvventures.com" target="_blank" rel="noopener">EQV Ventures <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+          <a href="https://www.eqvventuresii.com" target="_blank" rel="noopener">EQV Ventures II <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+          <a href="https://www.eqvpower.com" target="_blank" rel="noopener">EQV Power <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+        </nav>
+      </div>
+    </div>
+    <!-- Tier 2: primary bar with the site's own pages made visible -->
     <div class="eqv-container eqv-header__inner">
       <a class="eqv-logo" href="index.html" aria-label="EQV Group home">
         <svg class="eqv-logo__svg"><use href="#eqv-mark"/></svg>
       </a>
-      <nav class="eqv-header__nav" aria-label="EQV platform sites">
-        <a href="https://www.eqvventures.com" target="_blank" rel="noopener">EQV Ventures <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
-        <a href="https://www.eqvventuresii.com" target="_blank" rel="noopener">EQV Ventures II <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
-        <a href="https://www.eqvpower.com" target="_blank" rel="noopener">EQV Power <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 10.5 10.5 5.5M6 5.5h4.5V10"/></svg></a>
+      <nav class="eqv-header__primary" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="team.html" aria-current="page">Team</a>
+        <a href="history.html">History</a>
+        <a href="news.html">News</a>
+        <a href="eqv-operating.html">EQV Operating</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <div class="eqv-header__actions">
         <button class="eqv-theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-          <span aria-hidden="true">&#9680;</span>
+          <span aria-hidden="true">◐</span>
         </button>
         <button class="eqv-burger" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
           <span class="eqv-burger__label">Menu</span>
@@ -85,7 +104,7 @@
     </div>
   </div>
 
-  <main>
+  <main id="main">
     <!-- Page hero -->
     <section class="eqv-page-hero">
       <div class="eqv-container eqv-page-hero__inner">
@@ -100,31 +119,26 @@
       <div class="eqv-container">
         <div class="eqv-team-grid">
           <div class="eqv-person reveal">
-            <div class="eqv-person__avatar" aria-hidden="true">JS</div>
             <h3>Jerry Silvey</h3>
             <span class="role">Founder, Chief Executive Officer &amp; Chairman</span>
             <p>Founded the EQV Group in 2022. Previously a senior investment professional in the Energy &amp; Infrastructure group at Magnetar Capital, responsible for the execution and management of over $2 billion of structured direct investments across the energy asset spectrum.</p>
           </div>
           <div class="eqv-person reveal">
-            <div class="eqv-person__avatar" aria-hidden="true">TT</div>
             <h3>Tyson Taylor</h3>
             <span class="role">President</span>
             <p>President and director of the EQV Group since 2022. Previously Counsel at Magnetar Capital, where he served as lead counsel for the Energy &amp; Infrastructure group.</p>
           </div>
           <div class="eqv-person reveal">
-            <div class="eqv-person__avatar" aria-hidden="true">WS</div>
             <h3>Will Smith</h3>
             <span class="role">Chief Financial Officer</span>
             <p>A partner of the EQV Group, Will leads the firm&rsquo;s financial strategy and capital-markets activity across its investment vehicles, bringing extensive experience structuring and financing energy investments.</p>
           </div>
           <div class="eqv-person reveal">
-            <div class="eqv-person__avatar" aria-hidden="true">MP</div>
             <h3>Matt Parsons</h3>
             <span class="role">Managing Director</span>
             <p>Matt leads asset development and execution at the EQV Group, drawing on deep experience in energy project delivery and capital efficiency. He is a licensed Professional Engineer (PE) and a certified Project Management Professional (PMP).</p>
           </div>
           <div class="eqv-person reveal">
-            <div class="eqv-person__avatar" aria-hidden="true">DW</div>
             <h3>David Wilansky</h3>
             <span class="role">Managing Director</span>
             <p>David focuses on investments and transactions across the EQV Group&rsquo;s energy portfolio, pairing legal and commercial expertise in complex energy deals. He holds a Juris Doctor from Harvard Law School.</p>

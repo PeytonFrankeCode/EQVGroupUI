@@ -15,11 +15,22 @@ and the a11y focus ring).*
   Professionals (50+); only the 3,500+ properties count is client-confirmed.
 - Careers hero line "Proven energy assets need proven people" still uses the
   retired phrasing; reword if the client wants it fully gone.
-- Awaiting client assets: team headshots.
+- Team headshots: no longer needed — client dropped photos; the initials-
+  circle avatars were removed so cards lead with the name.
 - Contact form is still mailto-based; wire up a real backend (Formspree /
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Team: removed the initials-circle avatars (JS, TT, WS, ...) from all five
+  person cards and deleted the now-unused .eqv-person__avatar CSS, since the
+  client isn't using headshots. Cards now lead with the name.
+- Header (sitewide): rolled out the two-tier header to every page. Tier 1 is a
+  slim "Our companies" utility strip keeping the sister-site links up top;
+  tier 2 is a visible primary nav (Home, Team, History, News, EQV Operating,
+  Careers, Contact) with the current page underlined. Desktop hides the now-
+  redundant Menu button; mobile (<940px) collapses both tiers into the labelled
+  MENU button, unchanged. News articles highlight "News". Also added a focus-
+  only skip-to-content link + id="main" on every page for keyboard/SR users.
 - Menu: removed the redundant "Our Platform" (sister-site) list from the
   full-screen menu on desktop, since those links are now in the header. Kept it
   on mobile, where the header sister-links are hidden (wrapped in
