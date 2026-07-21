@@ -144,26 +144,29 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 
 /* Burger: plain bars, no filled circle */
 .eqv-burger {
-  width: 40px; height: 40px; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: .55rem;
   border: 0; background: transparent; color: var(--eqv-color-text); cursor: pointer;
-  position: relative; z-index: 210;
+  padding: .3rem .2rem; font: inherit; z-index: 210;
 }
 .eqv-burger:hover { opacity: .8; }
+/* Visible "Menu" label makes the control obvious to non-technical visitors. */
+.eqv-burger__label { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
 /* All three bars are centered on the same point; the closed hamburger just
    offsets the top/bottom bars. On open they rotate in place and cross exactly. */
-.eqv-burger span {
+.eqv-burger__icon { position: relative; width: 26px; height: 20px; flex-shrink: 0; }
+.eqv-burger__icon span {
   position: absolute; top: 50%; left: 50%;
   width: 26px; height: 3px; margin: -1.5px 0 0 -13px;
   background: currentColor; border-radius: 2px;
   transition: transform .3s ease, opacity .3s ease;
 }
-.eqv-burger span:nth-child(1) { transform: translateY(-8px); }
-.eqv-burger span:nth-child(3) { transform: translateY(8px); }
+.eqv-burger__icon span:nth-child(1) { transform: translateY(-8px); }
+.eqv-burger__icon span:nth-child(3) { transform: translateY(8px); }
 .eqv-header:not(.is-scrolled) .eqv-burger { color: #fff; }
 body.menu-open .eqv-burger { color: #fff; }
-body.menu-open .eqv-burger span:nth-child(1) { transform: rotate(45deg); }
-body.menu-open .eqv-burger span:nth-child(2) { opacity: 0; }
-body.menu-open .eqv-burger span:nth-child(3) { transform: rotate(-45deg); }
+body.menu-open .eqv-burger__icon span:nth-child(1) { transform: rotate(45deg); }
+body.menu-open .eqv-burger__icon span:nth-child(2) { opacity: 0; }
+body.menu-open .eqv-burger__icon span:nth-child(3) { transform: rotate(-45deg); }
 
 /* While the menu is open, keep the header (logo + ✕) above the overlay */
 body.menu-open .eqv-header {

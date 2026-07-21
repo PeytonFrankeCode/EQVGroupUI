@@ -20,7 +20,10 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- UX: added a visible "MENU" label next to the header hamburger on every page
+  so the navigation control is obvious to non-technical visitors (client
+  feedback: Jerry couldn't find the menu button). Refactored the burger into
+  label + icon; open/close X animation preserved.
 - Timeline: the center line (track + progress fill) now renders behind the
   milestone dots instead of on top of them, so each dot's halo cleanly breaks
   the line (z-index on the line pseudo-elements vs the items).
-_(none yet since reset)_
