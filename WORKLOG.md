@@ -20,6 +20,11 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Map: office cities (Dallas, Oklahoma City, Houston) are now clickable and
+  show that office's detail in the panel — role, address, phone, and a "Get in
+  touch" link. OKC has full contact; Dallas/Houston show role + link until the
+  client provides street addresses. (First half of Jerry's interactive-map
+  ask; the state->county zoom still needs county-level data.)
 - Landing page now tells the platform story: added an "EQV Platform" section
   after the overview with cards for EQV Operating, EQV Ventures Acquisition
   Corp. (NYSE: FTW), EQV Ventures Acquisition Corp. II, and EQV Power. EQV

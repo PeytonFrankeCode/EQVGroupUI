@@ -470,6 +470,11 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   backdrop-filter: blur(4px); box-shadow: 0 6px 18px rgba(2, 8, 60, .45);
 }
 .eqv-beacon__tag--left { left: auto; right: 10px; transform-origin: 100% 100%; }
+/* Office tags are clickable (re-enable pointer events inside the beacons layer) */
+.eqv-beacon__tag { pointer-events: auto; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+.eqv-beacon__tag:hover, .eqv-beacon__tag:focus-visible {
+  background: rgba(20, 32, 110, .9); border-color: rgba(200, 214, 255, .9); outline: none;
+}
 
 /* On desktop the map is ~2x the mobile size, so the fixed-px beacons look tiny
    and their pulse barely reads. Scale them up to stay proportional and visible. */

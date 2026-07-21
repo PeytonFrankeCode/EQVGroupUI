@@ -173,9 +173,12 @@
   var NONOP = { ND:1, MT:1, WY:1, CO:1 };
   // Offices as city points: fx/fy are fractional positions within the
   // state's bounding box (0,0 = northwest corner).
+  // Click an office to show its detail in the panel. Street addresses for
+  // Dallas/Houston are pending from the client; OKC has the mailing address.
   var OFFICES = [
     { state: "TX", label: "Dallas",        role: "Corporate Headquarters",        fx: .75, fy: .35, side: "left" },
-    { state: "OK", label: "Oklahoma City", role: "Operations and Administration", fx: .64, fy: .45 },
+    { state: "OK", label: "Oklahoma City", role: "Operations and Administration",  fx: .64, fy: .45,
+      address: "P.O. Box 721173, Oklahoma City, OK 73172", phone: "(405) 870-3786", tel: "+14058703786" },
     { state: "TX", label: "Houston",       role: "Satellite Office",              fx: .86, fy: .63 }
   ];
   var OFFICE_BY_STATE = {};
@@ -208,6 +211,17 @@
     path.classList.add("is-active");
     current = path;
     showInfo(abbr);
+  }
+
+  function showOffice(o) {
+    if (!info) return;
+    if (current) { current.classList.remove("is-active"); current = null; }
+    var html = "<strong>" + o.label + "</strong><span>" + o.role;
+    if (o.address) html += "<br>" + o.address;
+    html += "</span>";
+    if (o.phone) html += '<a href="tel:' + o.tel + '">' + o.phone + '</a>';
+    html += '<a href="contact.html">Get in touch <svg class="eqv-extlink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>';
+    info.innerHTML = html;
   }
 
   Object.keys(window.EQV_US_MAP).forEach(function (abbr) {
@@ -266,8 +280,15 @@
         '<span class="eqv-beacon__ring eqv-beacon__ring--2"></span>' +
         '<span class="eqv-beacon__beam"></span>' +
         '<span class="eqv-beacon__core"></span>' +
-        '<span class="eqv-beacon__tag' + (o.side === "left" ? " eqv-beacon__tag--left" : "") + '">' + o.label + '</span>';
+        '<span class="eqv-beacon__tag' + (o.side === "left" ? " eqv-beacon__tag--left" : "") + '" role="button" tabindex="0" aria-label="' + o.label + ' office">' + o.label + '</span>';
       beacons.appendChild(el);
+      var tag = el.querySelector(".eqv-beacon__tag");
+      if (tag) {
+        tag.addEventListener("click", function () { showOffice(o); });
+        tag.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showOffice(o); }
+        });
+      }
     });
   }
 
