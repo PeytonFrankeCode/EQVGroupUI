@@ -86,6 +86,17 @@ body {
 img, svg { max-width: 100%; }
 a { color: var(--eqv-color-link); text-decoration: none; }
 
+/* Skip link: hidden until focused, then drops in at the top-left so a
+   keyboard/screen-reader visitor can jump straight to the page content. */
+.eqv-skip {
+  position: fixed; top: 0; left: 0; z-index: 400;
+  transform: translateY(-120%);
+  background: var(--eqv-brand-blue); color: #fff; font-weight: 700;
+  padding: .7rem 1.2rem; border-radius: 0 0 8px 0;
+  transition: transform .15s ease;
+}
+.eqv-skip:focus { transform: none; }
+
 /* Visible keyboard focus for all interactive elements (light blue reads on
    both the light pages and the dark hero/footer/menu). */
 :focus-visible { outline: 2px solid #6E82FF; outline-offset: 3px; }
@@ -135,17 +146,44 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 .eqv-header__inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; }
 .eqv-header__actions { display: flex; align-items: center; gap: 1.4rem; }
 
+/* ---- Tier 1: slim utility strip (sister companies), desktop only ---- */
+.eqv-header__utility { display: none; border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent); }
+@media (min-width: 940px) { .eqv-header__utility { display: block; } }
+.eqv-header__utility-inner { display: flex; align-items: center; justify-content: flex-end; gap: 1.4rem; min-height: 40px; }
+.eqv-header__utility-label {
+  text-transform: uppercase; letter-spacing: .16em; font-size: .68rem; font-weight: 700; opacity: .55;
+}
+
 /* Desktop platform-site links (the sister sites). Hidden on mobile, where they
-   live in the menu's "Our Platform" list. The Menu button stays for site pages. */
+   live in the menu's "Our Platform" list. */
 .eqv-header__nav { display: none; }
 .eqv-header__nav a {
   display: inline-flex; align-items: center; gap: .3rem;
-  color: currentColor; font-weight: 600; font-size: .9rem; letter-spacing: .01em;
+  color: currentColor; font-weight: 600; font-size: .82rem; letter-spacing: .01em;
   opacity: .82; white-space: nowrap; transition: opacity .2s ease;
 }
 .eqv-header__nav a:hover { opacity: 1; }
 @media (min-width: 940px) {
   .eqv-header__nav { display: flex; align-items: center; gap: clamp(1rem, 1.8vw, 1.8rem); }
+}
+
+/* ---- Tier 2: primary nav (the site's own pages), desktop only ---- */
+.eqv-header__primary { display: none; }
+@media (min-width: 940px) {
+  .eqv-header__primary { display: flex; align-items: center; gap: clamp(.85rem, 1.7vw, 1.9rem); }
+  /* With the pages visible on desktop, the Menu button is redundant here */
+  .eqv-header__primary ~ .eqv-header__actions .eqv-burger { display: none; }
+}
+.eqv-header__primary a {
+  position: relative; color: currentColor; font-weight: 600; font-size: .96rem;
+  letter-spacing: .01em; opacity: .82; white-space: nowrap; padding: .3rem 0;
+  transition: opacity .2s ease;
+}
+.eqv-header__primary a:hover { opacity: 1; }
+.eqv-header__primary a[aria-current="page"] { opacity: 1; }
+.eqv-header__primary a[aria-current="page"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px;
+  background: currentColor; border-radius: 2px;
 }
 
 .eqv-theme-toggle {
