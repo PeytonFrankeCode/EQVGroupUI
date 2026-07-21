@@ -27,6 +27,15 @@
     try { heroVideo.currentTime = 0; } catch (e) {}
   }
 
+  /* ---------- Highlight the active link in the desktop header nav ---------- */
+  var headerNavLinks = document.querySelectorAll(".eqv-header__nav a");
+  if (headerNavLinks.length) {
+    var currentPage = location.pathname.split("/").pop() || "index.html";
+    headerNavLinks.forEach(function (a) {
+      if (a.getAttribute("href") === currentPage) a.setAttribute("aria-current", "page");
+    });
+  }
+
   /* ---------- Full-screen menu ---------- */
   var menuToggle = document.getElementById("menuToggle");
   var menu = document.getElementById("menu");

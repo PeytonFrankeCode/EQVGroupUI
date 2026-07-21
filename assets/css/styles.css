@@ -135,6 +135,19 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 .eqv-header__inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; }
 .eqv-header__actions { display: flex; align-items: center; gap: 1.4rem; }
 
+/* Visible desktop nav (hidden on mobile, where the labelled Menu button takes over) */
+.eqv-header__nav { display: none; }
+.eqv-header__nav a {
+  color: currentColor; font-weight: 600; font-size: .92rem; letter-spacing: .01em;
+  opacity: .82; white-space: nowrap; transition: opacity .2s ease;
+}
+.eqv-header__nav a:hover, .eqv-header__nav a[aria-current="page"] { opacity: 1; }
+.eqv-header__nav a[aria-current="page"] { font-weight: 700; }
+@media (min-width: 1080px) {
+  .eqv-header__nav { display: flex; align-items: center; gap: clamp(1rem, 1.9vw, 1.9rem); }
+  .eqv-header .eqv-burger { display: none; }
+}
+
 .eqv-theme-toggle {
   width: 42px; height: 42px; border-radius: 50%; border: 1px solid currentColor;
   background: transparent; color: var(--eqv-color-text); cursor: pointer;
@@ -571,6 +584,28 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-doc-card small { display: block; font-weight: 500; color: var(--eqv-color-text-muted); font-size: .82rem; }
 .eqv-doc-card .eqv-extlink { margin-left: auto; width: 1em; height: 1em; color: var(--eqv-color-text-muted); }
 .eqv-doc-card:hover .eqv-extlink { color: var(--eqv-color-primary); }
+
+/* ---------- EQV Platform cards ---------- */
+.eqv-platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.1rem; }
+.eqv-platform-card {
+  display: flex; flex-direction: column; gap: .5rem;
+  padding: 1.7rem 1.5rem; border-radius: var(--eqv-radius);
+  background: var(--eqv-color-surface); border: 1px solid var(--eqv-color-border);
+  color: var(--eqv-color-text);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease;
+}
+.eqv-platform-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(7, 33, 163, .12); border-color: var(--eqv-color-primary); }
+.eqv-platform-card__tag {
+  align-self: flex-start; text-transform: uppercase; letter-spacing: .1em;
+  font-size: .66rem; font-weight: 700; color: var(--eqv-color-primary);
+  border: 1px solid var(--eqv-color-border); border-radius: var(--eqv-radius-pill);
+  padding: .18rem .6rem;
+}
+.eqv-platform-card h3 { font-size: 1.12rem; line-height: 1.2; letter-spacing: -0.01em; margin-top: .2rem; }
+.eqv-platform-card p { margin: 0; color: var(--eqv-color-text-muted); font-size: .92rem; flex-grow: 1; }
+.eqv-platform-card__link { display: inline-flex; align-items: center; gap: .4rem; font-weight: 700; font-size: .88rem; color: var(--eqv-color-primary); margin-top: .4rem; transition: gap .2s ease; }
+.eqv-platform-card:hover .eqv-platform-card__link { gap: .65rem; }
+.eqv-platform-card__link svg { width: .95em; height: .95em; }
 
 /* ---------- FAQ ---------- */
 .eqv-faq-cats { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }

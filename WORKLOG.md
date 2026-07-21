@@ -20,6 +20,14 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Landing page now tells the platform story: added an "EQV Platform" section
+  after the overview with cards for EQV Operating, EQV Ventures Acquisition
+  Corp. (NYSE: FTW), EQV Ventures Acquisition Corp. II, and EQV Power. EQV
+  Power is a link-only placeholder (need a 1-2 sentence description; can't
+  reach eqvpower.com from here).
+- Navigation: added a visible desktop header nav (>=1080px) so first-time
+  visitors see the links directly; the labelled Menu button + full-screen menu
+  take over on mobile. Active page highlighted via JS (no per-file edits).
 - UX: added a visible "MENU" label next to the header hamburger on every page
   so the navigation control is obvious to non-technical visitors (client
   feedback: Jerry couldn't find the menu button). Refactored the burger into
