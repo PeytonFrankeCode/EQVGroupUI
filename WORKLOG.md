@@ -20,6 +20,10 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Menu: removed the redundant "Our Platform" (sister-site) list from the
+  full-screen menu on desktop, since those links are now in the header. Kept it
+  on mobile, where the header sister-links are hidden (wrapped in
+  .eqv-menu__platform, hidden at >=940px).
 - Header: per client, replaced the internal page tabs with links to the sister
   sites (EQV Ventures, EQV Ventures II, EQV Power, external ↗) so the platform
   family sits at the top. The site's own pages stay in the labelled MENU button

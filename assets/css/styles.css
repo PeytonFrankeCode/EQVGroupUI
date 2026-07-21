@@ -216,6 +216,9 @@ body.menu-open .eqv-menu__nav a:nth-child(5) { transition-delay: .32s; }
 body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-extlink { width: .8em; height: .8em; margin-left: .1em; vertical-align: -1px; flex-shrink: 0; }
 .eqv-menu__aside { display: flex; flex-direction: column; gap: .55rem; }
+.eqv-menu__platform { display: flex; flex-direction: column; gap: .55rem; }
+/* Sister-site links live in the header on desktop, so drop the menu's copy there */
+@media (min-width: 940px) { .eqv-menu__platform { display: none; } }
 .eqv-menu__aside a { color: rgba(255,255,255,.85); font-size: 1rem; }
 .eqv-menu__aside a:hover { color: #fff; }
 .eqv-menu__label {
