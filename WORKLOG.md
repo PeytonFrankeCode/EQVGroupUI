@@ -20,6 +20,11 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Platform everywhere: added EQV Power alongside EQV Ventures I & II in the
+  footer platform links and the full-screen menu's "Our Platform" list on all
+  pages, so the whole platform is represented site-wide (not just the landing
+  section). Fixed two scripted mis-inserts (a stray link in the II news
+  articles; left the homepage JSON-LD untouched).
 - Map: office cities (Dallas, Oklahoma City, Houston) are now clickable and
   show that office's detail in the panel — role, address, phone, and a "Get in
   touch" link. OKC has full contact; Dallas/Houston show role + link until the
