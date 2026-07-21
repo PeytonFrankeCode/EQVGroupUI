@@ -20,6 +20,10 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Header: per client, replaced the internal page tabs with links to the sister
+  sites (EQV Ventures, EQV Ventures II, EQV Power, external ↗) so the platform
+  family sits at the top. The site's own pages stay in the labelled MENU button
+  (now shown on all sizes). Removed the now-unused active-nav JS.
 - Platform everywhere: added EQV Power alongside EQV Ventures I & II in the
   footer platform links and the full-screen menu's "Our Platform" list on all
   pages, so the whole platform is represented site-wide (not just the landing
