@@ -400,17 +400,14 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-btn--ghost:hover { background: var(--eqv-color-primary); color: #fff; }
 
 /* ---------- Overview ---------- */
-.eqv-overview { max-width: 900px; }
+/* Full content width so the block's left edge sits flush with the page gutter
+   (aligned with the logo and the sections around it), not indented/centered. */
+.eqv-overview { max-width: var(--eqv-maxw); }
 .eqv-overview__lead {
   font-size: clamp(1.5rem, 3.2vw, 2.4rem); font-weight: 700; line-height: 1.25;
   letter-spacing: -0.015em; margin: 0 0 1.5rem;
 }
 .eqv-overview__body { font-size: clamp(1.02rem, 1.5vw, 1.2rem); color: var(--eqv-color-text-muted); margin: 0; max-width: 62ch; }
-
-/* Homepage overview: align its left edge to the page gutter (flush with the
-   sections below) and let the lead stretch the full content width, instead of
-   sitting as a narrower, indented 900px block. */
-#overview .eqv-overview { max-width: var(--eqv-maxw); }
 
 /* ---------- Operations (stats + map) ---------- */
 .eqv-ops {
