@@ -411,8 +411,8 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
    gutter as the sections around it (it was a narrow, centered 900px block that
    looked inset and skinnier than the headings near it). */
 #overview .eqv-overview { max-width: var(--eqv-maxw); }
-#overview .eqv-overview__lead { max-width: 42ch; font-size: clamp(2rem, 4.4vw, 3.1rem); }
-#overview .eqv-overview__body { max-width: 62ch; font-size: clamp(1.15rem, 1.9vw, 1.45rem); }
+#overview .eqv-overview__lead { max-width: 42ch; font-size: clamp(2.4rem, 5.2vw, 3.7rem); font-weight: 800; letter-spacing: -0.025em; }
+#overview .eqv-overview__body { max-width: 62ch; font-size: clamp(1.2rem, 1.95vw, 1.5rem); }
 
 /* ---------- Operations (stats + map) ---------- */
 .eqv-ops {
