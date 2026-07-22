@@ -106,8 +106,8 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 .eqv-container { max-width: var(--eqv-maxw); margin-inline: auto; padding-inline: var(--eqv-gutter); width: 100%; }
 .eqv-section { padding-block: clamp(4rem, 9vw, 7.5rem); }
 .eqv-eyebrow {
-  text-transform: uppercase; letter-spacing: .22em; font-size: .78rem;
-  font-weight: 700; color: var(--eqv-color-primary); margin: 0 0 1rem;
+  text-transform: uppercase; letter-spacing: .2em; font-size: 1.05rem;
+  font-weight: 800; color: var(--eqv-color-primary); margin: 0 0 1rem;
 }
 .eqv-eyebrow--light { color: #C9D2FF; }
 .eqv-h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); letter-spacing: -0.02em; }
@@ -406,13 +406,6 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   letter-spacing: -0.015em; margin: 0 0 1.5rem;
 }
 .eqv-overview__body { font-size: clamp(1.02rem, 1.5vw, 1.2rem); color: var(--eqv-color-text-muted); margin: 0; max-width: 62ch; }
-
-/* Homepage overview: span the full content width and align to the same left
-   gutter as the sections around it (it was a narrow, centered 900px block that
-   looked inset and skinnier than the headings near it). */
-#overview .eqv-overview { max-width: var(--eqv-maxw); }
-#overview .eqv-overview__lead { max-width: 42ch; font-size: clamp(2.4rem, 5.2vw, 3.7rem); font-weight: 800; letter-spacing: -0.025em; }
-#overview .eqv-overview__body { max-width: 62ch; font-size: clamp(1.2rem, 1.95vw, 1.5rem); }
 
 /* ---------- Operations (stats + map) ---------- */
 .eqv-ops {
