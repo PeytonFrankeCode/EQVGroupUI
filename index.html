@@ -70,6 +70,13 @@
       </g>
       <circle cx="412" cy="160" r="131.5" fill="none" stroke="currentColor" stroke-width="57"/>
     </symbol>
+    <!-- Oil derrick glyph, drawn once per well on the county map -->
+    <symbol id="eqv-derrick" viewBox="0 0 10 16">
+      <path d="M5 0.5 L8.6 14 L1.4 14 Z" fill="none" stroke="currentColor" stroke-width="0.9" stroke-linejoin="round"/>
+      <path d="M2.6 9 L7.4 9 M3.2 6 L6.8 6 M3.8 3.4 L6.2 3.4" stroke="currentColor" stroke-width="0.7"/>
+      <path d="M1.4 14 L5 6 L8.6 14" fill="none" stroke="currentColor" stroke-width="0.7"/>
+      <rect x="0" y="14" width="10" height="2" fill="currentColor"/>
+    </symbol>
   </svg>
 
   <!-- Header -->
@@ -251,8 +258,15 @@
               <div class="eqv-map3d__tilt" id="mapTilt">
                 <svg class="eqv-map3d__svg" id="usMap" viewBox="192 9 1028 746" role="group" aria-label="Interactive map of EQV operations by state"></svg>
                 <div class="eqv-map3d__beacons" id="mapBeacons" aria-hidden="true"></div>
+                <svg class="eqv-map3d__svg eqv-map3d__svg--county" id="countyMap" role="group" aria-label="County-level operations" aria-hidden="true"></svg>
+                <div class="eqv-map3d__beacons eqv-map3d__beacons--county" id="countyBeacons" aria-hidden="true"></div>
               </div>
               <div class="eqv-map3d__tooltip" id="mapTip" aria-hidden="true"></div>
+              <button class="eqv-map__back" id="mapBack" type="button" hidden>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H4M8.5 3.5 4 8l4.5 4.5"/></svg>
+                U.S. map
+              </button>
+              <p class="eqv-map__statelabel" id="mapStateLabel" aria-hidden="true"></p>
             </div>
             <div class="eqv-map__legend">
               <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--asset"></i> Active Operations</span>
@@ -262,7 +276,7 @@
           </div>
           <aside class="eqv-map__info" id="mapInfo" aria-live="polite">
             <strong>Explore our footprint</strong>
-            <span>Select a state, or click an office, to see the details.</span>
+            <span>Click a highlighted state to zoom in and see its counties, wells, and offices.</span>
           </aside>
         </div>
       </div>
@@ -334,6 +348,7 @@
   </footer>
 
   <script src="assets/js/us-map-data.js"></script>
+  <script src="assets/js/county-map-data.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

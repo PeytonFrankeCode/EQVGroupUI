@@ -158,7 +158,8 @@
     OK:"Long-life conventional production in the Anadarko Basin of western Oklahoma.",
     NM:"Northwest Shelf of the Permian Basin: roughly 1,600 producing wells across Eddy and Lea counties.",
     LA:"Stacked-pay natural gas across North Louisiana, including the Cotton Valley and Haynesville.",
-    MS:"Oil from the Tuscaloosa Marine Shale plus conventional gas in southwest Mississippi."
+    MS:"Oil from the Tuscaloosa Marine Shale plus conventional gas in southwest Mississippi.",
+    AL:"Conventional oil and gas production in Conecuh County on the Gulf Coast trend of south Alabama."
   };
   // Non-operated interest states: shown in a muted shade, not clickable.
   var NONOP = { ND:1, MT:1, WY:1, CO:1 };
@@ -226,10 +227,10 @@
     if (hasOps) {
       path.setAttribute("tabindex", "0");
       path.setAttribute("role", "button");
-      path.setAttribute("aria-label", stateName(abbr) + ", active operations");
-      path.addEventListener("click", function () { select(path, abbr); });
+      path.setAttribute("aria-label", stateName(abbr) + ", active operations. Click to zoom into counties.");
+      path.addEventListener("click", function () { openCounty(abbr, path); });
       path.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(path, abbr); }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openCounty(abbr, path); }
       });
       path.addEventListener("mouseenter", function () {
         if (!tip) return;
@@ -283,21 +284,138 @@
     });
   }
 
-  // Parallax tilt toward the cursor
+  // Parallax tilt toward the cursor. County mode uses a much flatter plane so
+  // the counties and wells read clearly.
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function baseTilt() { return countyMode ? 8 : 35; }
+  function resetTilt() {
+    tilt.style.setProperty("--eqv-map-tilt", baseTilt() + "deg");
+    tilt.style.setProperty("--eqv-map-yaw", "0deg");
+  }
   if (scene && tilt && !reduceMotion) {
-    var BASE = 35;
     scene.addEventListener("mousemove", function (e) {
       var r = scene.getBoundingClientRect();
       var nx = ((e.clientX - r.left) / r.width) * 2 - 1;
       var ny = ((e.clientY - r.top) / r.height) * 2 - 1;
-      // Drive the plane via CSS vars so beacon labels counter-rotate in lockstep
-      tilt.style.setProperty("--eqv-map-tilt", (BASE - ny * 4) + "deg");
-      tilt.style.setProperty("--eqv-map-yaw", (nx * 5) + "deg");
+      var swing = countyMode ? 3 : 4;
+      tilt.style.setProperty("--eqv-map-tilt", (baseTilt() - ny * swing) + "deg");
+      tilt.style.setProperty("--eqv-map-yaw", (nx * (countyMode ? 3 : 5)) + "deg");
     });
-    scene.addEventListener("mouseleave", function () {
-      tilt.style.removeProperty("--eqv-map-tilt");
-      tilt.style.removeProperty("--eqv-map-yaw");
-    });
+    scene.addEventListener("mouseleave", resetTilt);
   }
+
+  /* ---------- County-level zoom ---------- */
+  var countyMap = document.getElementById("countyMap");
+  var countyBeacons = document.getElementById("countyBeacons");
+  var mapBack = document.getElementById("mapBack");
+  var stateLabel = document.getElementById("mapStateLabel");
+  var countyMode = false;
+  var COUNTY = window.EQV_COUNTY_MAP || {};
+
+  function fmt(n) { return n.toLocaleString("en-US"); }
+
+  function stateSummary(d) {
+    var totalWells = 0, basins = {};
+    d.counties.forEach(function (c) { totalWells += c.wells; basins[c.basin] = 1; });
+    var bits = [];
+    if (d.counties.length) bits.push(d.counties.length + (d.counties.length === 1 ? " county" : " counties") + " with operations");
+    if (totalWells) bits.push(fmt(totalWells) + " wells");
+    if (d.offices && d.offices.length) bits.push(d.offices.map(function (o) { return o.name; }).join(" & ") + " office" + (d.offices.length > 1 ? "s" : ""));
+    var html = "<strong>" + d.name + "</strong><span>" + (bits.join(" &middot; ") || "No operated wells reported.");
+    if (totalWells) html += "<br>Basins: " + Object.keys(basins).join(", ");
+    html += "</span><span class=\"eqv-map__hint\">Hover a county for detail &middot; each &#9650; marks one well.</span>";
+    if (info) info.innerHTML = html;
+  }
+
+  function showCounty(c, abbr) {
+    if (!info) return;
+    info.innerHTML = "<strong>" + c.name + " County, " + abbr + "</strong><span>" +
+      fmt(c.wells) + (c.wells === 1 ? " well" : " wells") + " &middot; " + c.basin + "</span>";
+  }
+
+  function pctX(x, vb) { return (x - vb[0]) / vb[2] * 100; }
+  function pctY(y, vb) { return (y - vb[1]) / vb[3] * 100; }
+
+  function openCounty(abbr, path) {
+    var d = COUNTY[abbr];
+    if (!d) { select(path, abbr); return; }  // no county data: fall back to state highlight
+    if (current) { current.classList.remove("is-active"); current = null; }
+
+    var vb = d.viewBox.split(" ").map(parseFloat);
+    var dw = vb[2] * 0.011, dh = dw * 1.5;  // derrick size relative to the state's viewBox
+    countyMap.setAttribute("viewBox", d.viewBox);
+
+    var svg = '<path class="eqv-county-outline" d="' + d.outline + '"/>';
+    d.counties.forEach(function (c) {
+      svg += '<path class="eqv-county" tabindex="0" role="button" data-fips="' + c.fips + '" ' +
+        'aria-label="' + c.name + ' County, ' + fmt(c.wells) + ' wells" d="' + c.d + '"/>';
+    });
+    // wells: one derrick per well, drawn on top of the counties
+    d.counties.forEach(function (c) {
+      var g = '<g class="eqv-wells">';
+      for (var i = 0; i < c.wells_pts.length; i++) {
+        var p = c.wells_pts[i];
+        g += '<use href="#eqv-derrick" class="eqv-well" x="' + (p[0] - dw / 2).toFixed(1) +
+          '" y="' + (p[1] - dh).toFixed(1) + '" width="' + dw.toFixed(2) + '" height="' + dh.toFixed(2) + '"/>';
+      }
+      g += '</g>';
+      svg += g;
+    });
+    countyMap.innerHTML = svg;
+
+    // hover / focus a county -> detail in the panel
+    Array.prototype.forEach.call(countyMap.querySelectorAll(".eqv-county"), function (el) {
+      var c = d.counties.filter(function (x) { return x.fips === el.dataset.fips; })[0];
+      el.addEventListener("mouseenter", function () { el.classList.add("is-hot"); showCounty(c, abbr); });
+      el.addEventListener("mouseleave", function () { el.classList.remove("is-hot"); stateSummary(d); });
+      el.addEventListener("focus", function () { showCounty(c, abbr); });
+      el.addEventListener("blur", function () { stateSummary(d); });
+    });
+
+    // office 3D buildings
+    countyBeacons.innerHTML = "";
+    (d.offices || []).forEach(function (o) {
+      var el = document.createElement("div");
+      el.className = "eqv-office3d";
+      el.style.left = pctX(o.x, vb) + "%";
+      el.style.top = pctY(o.y, vb) + "%";
+      el.innerHTML =
+        '<span class="eqv-office3d__shadow"></span>' +
+        '<span class="eqv-office3d__build"><span class="eqv-office3d__side"></span><span class="eqv-office3d__front"></span><span class="eqv-office3d__roof"></span></span>' +
+        '<span class="eqv-office3d__tag" role="button" tabindex="0">' + o.name + '</span>';
+      countyBeacons.appendChild(el);
+      var tag = el.querySelector(".eqv-office3d__tag");
+      var off = { label: o.name, role: o.role, address: o.address, phone: o.phone, tel: o.tel };
+      tag.addEventListener("click", function () { showOffice(off); });
+      tag.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showOffice(off); }
+      });
+    });
+
+    countyMode = true;
+    scene.classList.add("is-county");
+    countyMap.setAttribute("aria-hidden", "false");
+    countyBeacons.setAttribute("aria-hidden", "false");
+    if (mapBack) { mapBack.hidden = false; }
+    if (stateLabel) { stateLabel.textContent = d.name; stateLabel.setAttribute("aria-hidden", "false"); }
+    if (tip) tip.classList.remove("is-visible");
+    resetTilt();
+    stateSummary(d);
+  }
+
+  function closeCounty() {
+    countyMode = false;
+    scene.classList.remove("is-county");
+    countyMap.setAttribute("aria-hidden", "true");
+    countyBeacons.setAttribute("aria-hidden", "true");
+    countyMap.innerHTML = "";
+    countyBeacons.innerHTML = "";
+    if (mapBack) mapBack.hidden = true;
+    if (stateLabel) stateLabel.setAttribute("aria-hidden", "true");
+    resetTilt();
+    if (info) info.innerHTML = '<strong>Explore our footprint</strong><span>Click a highlighted state to zoom in and see its counties, wells, and offices.</span>';
+  }
+
+  if (mapBack) mapBack.addEventListener("click", closeCounty);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && countyMode) closeCounty(); });
 })();

@@ -21,6 +21,17 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- Interactive county map: clicking an active state on the footprint map now
+  zooms into a county-level view built from the client's per-county well data
+  (assets/js/county-map-data.js, generated from us-atlas MIT county boundaries
+  via a one-consistent AlbersUSA projection). Each county with operations is
+  highlighted and drawn with one oil-derrick glyph per well (3,388 total,
+  scattered inside the real county polygons; dense counties like Eddy read as a
+  saturated field). Offices (Dallas, Houston, OKC) render as 3D buildings that
+  stand up off the tilted plane. Panel shows state summary + per-county detail
+  on hover; back button + Esc return to the U.S. map. Alabama (Conecuh) is now
+  an active state. Homepage stat numbers (3,500+/16/50+) left unchanged per
+  client. Only wired on index.html.
 - Team: removed the initials-circle avatars (JS, TT, WS, ...) from all five
   person cards and deleted the now-unused .eqv-person__avatar CSS, since the
   client isn't using headshots. Cards now lead with the name.
