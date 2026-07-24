@@ -25,7 +25,7 @@ and the a11y focus ring).*
   zooms into a county-level view built from the client's per-county well data
   (assets/js/county-map-data.js, generated from us-atlas MIT county boundaries
   via a one-consistent AlbersUSA projection). Each county with operations is
-  highlighted and drawn with one oil-derrick glyph per well (3,388 total,
+  highlighted and drawn with one pumpjack glyph per well (3,388 total,
   scattered inside the real county polygons; dense counties like Eddy read as a
   saturated field). Offices (Dallas, Houston, OKC) render as 3D buildings that
   stand up off the tilted plane. Panel shows state summary + per-county detail
