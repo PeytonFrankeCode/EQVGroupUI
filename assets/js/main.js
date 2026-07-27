@@ -323,7 +323,7 @@
     if (d.offices && d.offices.length) bits.push(d.offices.map(function (o) { return o.name; }).join(" & ") + " office" + (d.offices.length > 1 ? "s" : ""));
     var html = "<strong>" + d.name + "</strong><span>" + (bits.join(" &middot; ") || "No operated wells reported.");
     if (totalWells) html += "<br>Basins: " + Object.keys(basins).join(", ");
-    html += "</span><span class=\"eqv-map__hint\">Hover a county for detail &middot; each pumpjack marks one well.</span>";
+    html += "</span><span class=\"eqv-map__hint\">Brighter counties have more wells &middot; hover one for its count.</span>";
     if (info) info.innerHTML = html;
   }
 
@@ -342,24 +342,18 @@
     if (current) { current.classList.remove("is-active"); current = null; }
 
     var vb = d.viewBox.split(" ").map(parseFloat);
-    var dw = vb[2] * 0.016, dh = dw * 0.68;  // pumpjack size (wider than tall) relative to the state's viewBox
     countyMap.setAttribute("viewBox", d.viewBox);
 
+    // Shade each operations county by its well count (heavier shade = more
+    // wells), the same flat-fill treatment the states get on the national map.
+    var maxW = 1;
+    d.counties.forEach(function (c) { if (c.wells > maxW) maxW = c.wells; });
     var svg = '<path class="eqv-county-outline" d="' + d.outline + '"/>';
     d.counties.forEach(function (c) {
+      var t = Math.log(c.wells + 1) / Math.log(maxW + 1);   // 0..1 on a log scale
+      var op = (0.30 + t * 0.52).toFixed(3);
       svg += '<path class="eqv-county" tabindex="0" role="button" data-fips="' + c.fips + '" ' +
-        'aria-label="' + c.name + ' County, ' + fmt(c.wells) + ' wells" d="' + c.d + '"/>';
-    });
-    // wells: one derrick per well, drawn on top of the counties
-    d.counties.forEach(function (c) {
-      var g = '<g class="eqv-wells">';
-      for (var i = 0; i < c.wells_pts.length; i++) {
-        var p = c.wells_pts[i];
-        g += '<use href="#eqv-pumpjack" class="eqv-well" x="' + (p[0] - dw / 2).toFixed(1) +
-          '" y="' + (p[1] - dh).toFixed(1) + '" width="' + dw.toFixed(2) + '" height="' + dh.toFixed(2) + '"/>';
-      }
-      g += '</g>';
-      svg += g;
+        'style="--wells-op:' + op + '" aria-label="' + c.name + ' County, ' + fmt(c.wells) + ' wells" d="' + c.d + '"/>';
     });
     countyMap.innerHTML = svg;
 

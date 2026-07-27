@@ -574,14 +574,12 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   stroke-width: .6; stroke-linejoin: round;
 }
 .eqv-county {
-  fill: rgba(120, 143, 255, .42); stroke: #B7C4FF; stroke-width: .6;
+  fill: rgba(139, 158, 255, var(--wells-op, .42)); stroke: #B7C4FF; stroke-width: .6;
   cursor: pointer; outline: none; transition: fill .18s ease, stroke .18s ease;
 }
 .eqv-county:hover, .eqv-county.is-hot, .eqv-county:focus-visible {
-  fill: rgba(180, 195, 255, .62); stroke: #fff;
+  fill: rgba(200, 212, 255, .85); stroke: #fff;
 }
-.eqv-wells { pointer-events: none; }
-.eqv-well { color: #F3F6FF; opacity: .95; }
 
 /* Back button + state title (screen space, above the tilted plane) */
 .eqv-map__back {

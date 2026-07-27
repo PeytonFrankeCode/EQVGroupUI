@@ -25,9 +25,10 @@ and the a11y focus ring).*
   zooms into a county-level view built from the client's per-county well data
   (assets/js/county-map-data.js, generated from us-atlas MIT county boundaries
   via a one-consistent AlbersUSA projection). Each county with operations is
-  highlighted and drawn with one pumpjack glyph per well (3,388 total,
-  scattered inside the real county polygons; dense counties like Eddy read as a
-  saturated field). Offices (Dallas, Houston, OKC) render as 3D buildings that
+  shaded by its well count (log-scaled fill opacity, like the shaded states on
+  the national map; hover shows the exact count). [An earlier version drew one
+  pumpjack glyph per well; the #eqv-pumpjack symbol is kept in index.html but
+  no longer used.] Offices (Dallas, Houston, OKC) render as 3D buildings that
   stand up off the tilted plane. Panel shows state summary + per-county detail
   on hover; back button + Esc return to the U.S. map. Alabama (Conecuh) is now
   an active state. Homepage stat numbers (3,500+/16/50+) left unchanged per
