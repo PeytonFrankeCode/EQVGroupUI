@@ -448,7 +448,7 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   --eqv-map-tilt: 35deg;  /* steepness of the hologram plane */
   --eqv-map-yaw: 0deg;    /* parallax, driven by JS */
   transform: rotateX(var(--eqv-map-tilt)) rotateY(var(--eqv-map-yaw)) scale(var(--eqv-map-scale, 1.12));
-  transform-style: preserve-3d; will-change: transform; transition: transform .25s ease-out;
+  transform-style: preserve-3d; will-change: transform; transition: transform .2s cubic-bezier(.2,.7,.3,1);
 }
 .eqv-map3d__svg { display: block; width: 100%; height: auto; overflow: visible;
   filter: drop-shadow(0 34px 44px rgba(2, 8, 60, .5)); }
@@ -560,10 +560,15 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
 .eqv-map__hint { font-size: .82rem !important; opacity: .6; margin-top: .5rem; }
 
 /* ---------- County-level zoom ---------- */
-.eqv-map3d__svg--county, .eqv-map3d__beacons--county { display: none; }
-.eqv-map3d.is-county #usMap, .eqv-map3d.is-county #mapBeacons { display: none; }
-.eqv-map3d.is-county .eqv-map3d__svg--county { display: block; }
-.eqv-map3d.is-county .eqv-map3d__beacons--county { display: block; }
+/* The county view overlays the national map; the two crossfade on click. */
+.eqv-map3d__svg--county { position: absolute; inset: 0; width: 100%; height: 100%; }
+#usMap, #mapBeacons, .eqv-map3d__svg--county, .eqv-map3d__beacons--county {
+  transition: opacity .22s ease;
+}
+.eqv-map3d__svg--county, .eqv-map3d__beacons--county { opacity: 0; pointer-events: none; }
+.eqv-map3d.is-county #usMap, .eqv-map3d.is-county #mapBeacons { opacity: 0; pointer-events: none; }
+.eqv-map3d.is-county .eqv-map3d__svg--county { opacity: 1; pointer-events: auto; }
+.eqv-map3d.is-county .eqv-map3d__beacons--county { opacity: 1; }
 /* Flatter, unscaled plane when zoomed into a state so counties read clearly */
 .eqv-map3d.is-county .eqv-map3d__tilt { --eqv-map-scale: 1; }
 /* The national legend (non-operated key, etc.) doesn't apply to the county view */
@@ -633,7 +638,7 @@ body.menu-open .eqv-menu__nav a:nth-child(6) { transition-delay: .38s; }
   transform: skewX(-45deg); transform-origin: left bottom;
 }
 .eqv-office3d__tag {
-  position: absolute; left: 12px; bottom: 22px; white-space: nowrap; cursor: pointer;
+  position: absolute; left: 12px; bottom: 22px; white-space: nowrap; cursor: pointer; pointer-events: auto;
   transform: rotateY(calc(var(--eqv-map-yaw, 0deg) * -1)) rotateX(calc(var(--eqv-map-tilt, 12deg) * -1));
   transform-origin: 0 100%;
   font-size: .74rem; font-weight: 700; letter-spacing: .05em; color: #fff;

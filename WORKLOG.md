@@ -21,6 +21,11 @@ and the a11y focus ring).*
   Cloudflare Pages Functions) once the client picks a service.
 
 ## Entries
+- County map polish: national<->county transition now crossfades (opacity)
+  with a snappier plane-tilt easing; a state is only shaded/clickable if it has
+  county well data, so Oklahoma (office only, no wells) is now unshaded/inert
+  (its OKC office beacon still shows). Office tags in the county view are
+  clickable. Asset links carry ?v=N cache-busting (currently v=3).
 - Interactive county map: clicking an active state on the footprint map now
   zooms into a county-level view built from the client's per-county well data
   (assets/js/county-map-data.js, generated from us-atlas MIT county boundaries

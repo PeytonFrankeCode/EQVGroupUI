@@ -217,7 +217,11 @@
   }
 
   Object.keys(window.EQV_US_MAP).forEach(function (abbr) {
-    var hasOps = !!ASSETS[abbr];
+    // A state is "active" (shaded + clickable to zoom) only if it actually has
+    // county-level well data. A state flagged in ASSETS but with no well
+    // counties (e.g. Oklahoma — office only) stays unshaded/inert.
+    var cd = window.EQV_COUNTY_MAP && window.EQV_COUNTY_MAP[abbr];
+    var hasOps = !!ASSETS[abbr] && !!(cd && cd.counties && cd.counties.length);
     var path = document.createElementNS(SVG_NS, "path");
     path.setAttribute("d", window.EQV_US_MAP[abbr][1]);
     path.setAttribute("class", "eqv-geo " + (hasOps ? "is-asset" : (NONOP[abbr] ? "is-nonop" : "is-inert")));
@@ -402,8 +406,8 @@
     scene.classList.remove("is-county");
     countyMap.setAttribute("aria-hidden", "true");
     countyBeacons.setAttribute("aria-hidden", "true");
-    countyMap.innerHTML = "";
-    countyBeacons.innerHTML = "";
+    // Leave the county content in place so it fades out smoothly; the next
+    // openCounty() rebuilds it. (Clearing here would make it vanish abruptly.)
     if (mapBack) mapBack.hidden = true;
     if (stateLabel) stateLabel.setAttribute("aria-hidden", "true");
     resetTilt();
