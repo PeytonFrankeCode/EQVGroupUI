@@ -19,7 +19,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
   <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=3" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=4" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,7 +52,7 @@
   }
   </script>
 </head>
-<body>
+<body class="eqv-wide">
 
   <!-- Skip link: first Tab press jumps a keyboard/screen-reader user past the nav -->
   <a class="eqv-skip" href="#main">Skip to content</a>
@@ -97,20 +97,11 @@
         </nav>
       </div>
     </div>
-    <!-- Tier 2: primary bar with the site's own pages made visible -->
+    <!-- Tier 2: logo + controls; the site's pages live in the Menu -->
     <div class="eqv-container eqv-header__inner">
       <a class="eqv-logo" href="index.html" aria-label="EQV Group home">
         <svg class="eqv-logo__svg"><use href="#eqv-mark"/></svg>
       </a>
-      <nav class="eqv-header__primary" aria-label="Primary">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="team.html">Team</a>
-        <a href="history.html">History</a>
-        <a href="news.html">News</a>
-        <a href="eqv-operating.html">EQV Operating</a>
-        <a href="careers.html">Careers</a>
-        <a href="contact.html">Contact</a>
-      </nav>
       <div class="eqv-header__actions">
         <button class="eqv-theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
           <span aria-hidden="true">◐</span>
@@ -130,7 +121,7 @@
       <a href="team.html"><small>02</small>Team</a>
       <a href="history.html"><small>03</small>History</a>
       <a href="news.html"><small>04</small>News</a>
-      <a href="eqv-operating.html"><small>05</small>EQV Operating</a>
+      <a href="eqv-operating.html"><small>05</small>Owner Relations</a>
       <a href="careers.html"><small>06</small>Careers</a>
       <a href="contact.html"><small>07</small>Contact</a>
     </nav>
@@ -259,6 +250,11 @@
         </div>
         <div class="eqv-ops__grid reveal">
           <div class="eqv-map">
+            <div class="eqv-map__legend" id="mapLegend">
+              <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--asset"></i> Active Operations</span>
+              <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--nonop"></i> Non-Operated Interests</span>
+              <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--office"></i> EQV Offices</span>
+            </div>
             <div class="eqv-map3d" id="mapScene">
               <div class="eqv-map3d__tilt" id="mapTilt">
                 <svg class="eqv-map3d__svg" id="usMap" viewBox="192 9 1028 746" role="group" aria-label="Interactive map of EQV operations by state"></svg>
@@ -273,16 +269,24 @@
               </button>
               <p class="eqv-map__statelabel" id="mapStateLabel" aria-hidden="true"></p>
             </div>
-            <div class="eqv-map__legend">
-              <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--asset"></i> Active Operations</span>
-              <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--nonop"></i> Non-Operated Interests</span>
-              <span class="eqv-legend-item"><i class="eqv-swatch eqv-swatch--office"></i> EQV Offices</span>
-            </div>
           </div>
-          <aside class="eqv-map__info" id="mapInfo" aria-live="polite">
-            <strong>Explore our footprint</strong>
-            <span>Click a highlighted state to zoom in and see its counties, wells, and offices.</span>
-          </aside>
+          <div class="eqv-map__side">
+            <!-- County view only: a fixed contact list that doesn't change as you hover counties -->
+            <aside class="eqv-map__contacts" id="mapContacts" aria-label="Owner relations contacts" hidden>
+              <p class="eqv-map__contacts-title">Owner Relations Contacts</p>
+              <dl>
+                <dt>West Texas</dt><dd><a href="mailto:ownerrelations@eqvoperating.com">ownerrelations@eqvoperating.com</a></dd>
+                <dt>East Texas &amp; Mississippi</dt><dd><a href="mailto:owner-relations@eqvoperating.com">owner-relations@eqvoperating.com</a></dd>
+                <dt>Owner Relations Phone</dt><dd><a href="tel:+14058703786">(405) 870-3786</a></dd>
+                <dt>Land Inquiry</dt><dd><a href="mailto:land@eqvoperating.com">land@eqvoperating.com</a></dd>
+                <dt>Mailing Address</dt><dd>P.O. Box 721173, Oklahoma City, OK 73172</dd>
+              </dl>
+            </aside>
+            <aside class="eqv-map__info" id="mapInfo" aria-live="polite">
+              <strong>Explore our footprint</strong>
+              <span>Click a highlighted state to zoom in and see its counties, wells, and offices.</span>
+            </aside>
+          </div>
         </div>
       </div>
     </section>
@@ -335,7 +339,7 @@
           <a href="team.html">Team</a>
           <a href="history.html">History</a>
           <a href="news.html">News</a>
-          <a href="eqv-operating.html">EQV Operating</a>
+          <a href="eqv-operating.html">Owner Relations</a>
           <a href="careers.html">Careers</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -352,8 +356,8 @@
     </div>
   </footer>
 
-  <script src="assets/js/us-map-data.js?v=3"></script>
-  <script src="assets/js/county-map-data.js?v=3"></script>
-  <script src="assets/js/main.js?v=3"></script>
+  <script src="assets/js/us-map-data.js?v=4"></script>
+  <script src="assets/js/county-map-data.js?v=4"></script>
+  <script src="assets/js/main.js?v=4"></script>
 </body>
 </html>

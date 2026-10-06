@@ -250,6 +250,29 @@
     mapEl.appendChild(path);
   });
 
+  // County lines inside the clickable states (drawn over the fills, never
+  // intercepting clicks). The national outlines come from a different
+  // projection than the county data, so fit each state's lines onto its
+  // national outline by matching the two bounding boxes.
+  var LINES = window.EQV_COUNTY_LINES || {};
+  Array.prototype.forEach.call(mapEl.querySelectorAll(".eqv-geo.is-asset"), function (path) {
+    var abbr = path.dataset.abbr, cd = window.EQV_COUNTY_MAP[abbr];
+    if (!LINES[abbr] || !cd.outline) return;
+    var probe = document.createElementNS(SVG_NS, "path");
+    probe.setAttribute("d", cd.outline);
+    mapEl.appendChild(probe);
+    var from = probe.getBBox(), to = path.getBBox();
+    mapEl.removeChild(probe);
+    if (!from.width || !from.height) return;
+    var sx = to.width / from.width, sy = to.height / from.height;
+    var lines = document.createElementNS(SVG_NS, "path");
+    lines.setAttribute("class", "eqv-geo-counties");
+    lines.setAttribute("d", LINES[abbr]);
+    lines.setAttribute("aria-hidden", "true");
+    lines.setAttribute("transform", "translate(" + (to.x - from.x * sx) + " " + (to.y - from.y * sy) + ") scale(" + sx + " " + sy + ")");
+    mapEl.appendChild(lines);
+  });
+
   // Cursor tooltip follows the pointer in screen space
   if (scene && tip) {
     scene.addEventListener("mousemove", function (e) {
@@ -313,6 +336,7 @@
   var countyBeacons = document.getElementById("countyBeacons");
   var mapBack = document.getElementById("mapBack");
   var stateLabel = document.getElementById("mapStateLabel");
+  var mapContacts = document.getElementById("mapContacts");
   var countyMode = false;
   var COUNTY = window.EQV_COUNTY_MAP || {};
 
@@ -353,6 +377,7 @@
     var maxW = 1;
     d.counties.forEach(function (c) { if (c.wells > maxW) maxW = c.wells; });
     var svg = '<path class="eqv-county-outline" d="' + d.outline + '"/>';
+    if (LINES[abbr]) svg += '<path class="eqv-county-lines" d="' + LINES[abbr] + '"/>';
     d.counties.forEach(function (c) {
       var t = Math.log(c.wells + 1) / Math.log(maxW + 1);   // 0..1 on a log scale
       var op = (0.30 + t * 0.52).toFixed(3);
@@ -370,19 +395,18 @@
       el.addEventListener("blur", function () { stateSummary(d); });
     });
 
-    // office 3D buildings
+    // office dots
     countyBeacons.innerHTML = "";
     (d.offices || []).forEach(function (o) {
       var el = document.createElement("div");
-      el.className = "eqv-office3d";
+      el.className = "eqv-office-dot";
       el.style.left = pctX(o.x, vb) + "%";
       el.style.top = pctY(o.y, vb) + "%";
       el.innerHTML =
-        '<span class="eqv-office3d__shadow"></span>' +
-        '<span class="eqv-office3d__build"><span class="eqv-office3d__side"></span><span class="eqv-office3d__front"></span><span class="eqv-office3d__roof"></span></span>' +
-        '<span class="eqv-office3d__tag" role="button" tabindex="0">' + o.name + '</span>';
+        '<span class="eqv-office-dot__core"></span>' +
+        '<span class="eqv-office-dot__tag" role="button" tabindex="0">' + o.name + '</span>';
       countyBeacons.appendChild(el);
-      var tag = el.querySelector(".eqv-office3d__tag");
+      var tag = el.querySelector(".eqv-office-dot__tag");
       var off = { label: o.name, role: o.role, address: o.address, phone: o.phone, tel: o.tel };
       tag.addEventListener("click", function () { showOffice(off); });
       tag.addEventListener("keydown", function (e) {
@@ -395,6 +419,7 @@
     countyMap.setAttribute("aria-hidden", "false");
     countyBeacons.setAttribute("aria-hidden", "false");
     if (mapBack) { mapBack.hidden = false; }
+    if (mapContacts) mapContacts.hidden = false;
     if (stateLabel) { stateLabel.textContent = d.name; stateLabel.setAttribute("aria-hidden", "false"); }
     if (tip) tip.classList.remove("is-visible");
     resetTilt();
@@ -409,7 +434,8 @@
     // Leave the county content in place so it fades out smoothly; the next
     // openCounty() rebuilds it. (Clearing here would make it vanish abruptly.)
     if (mapBack) mapBack.hidden = true;
-    if (stateLabel) stateLabel.setAttribute("aria-hidden", "true");
+    if (mapContacts) mapContacts.hidden = true;
+    if (stateLabel) { stateLabel.textContent = ""; stateLabel.setAttribute("aria-hidden", "true"); }
     resetTilt();
     if (info) info.innerHTML = '<strong>Explore our footprint</strong><span>Click a highlighted state to zoom in and see its counties, wells, and offices.</span>';
   }

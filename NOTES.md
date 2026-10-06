@@ -58,6 +58,20 @@ redesign. Add to this as ideas come up.
   mountain-sunset photo (`assets/img/hero-night.jpg`).
 
 ## Open items
+- Client punch list (2026-10-06): nav label "EQV Operating" -> "Owner
+  Relations" sitewide (page/file name unchanged; the company name EQV Operating
+  LLC stays in body copy). Desktop tab bar removed: all pages live in the MENU
+  button again, and the full-screen menu is now white (page background; deep
+  blue in dark mode) with its text aligned to the logo/container edge. Front
+  page (body.eqv-wide) stretches to min(1520px, 93vw) on >=1100px screens.
+  Map: legend moved above the map (it collided with Alaska); state box pinned
+  top-right; sharper/brighter state borders + faint county lines inside the
+  clickable states so the blues don't blend; mitered (square) corners on states
+  and square map panels/tags; smaller office beacons; county view shows every
+  county border, offices as dots (not 3D buildings), a constant Owner Relations
+  contact box above the state box, and a borderless back button. Fixed: the
+  state name stayed on screen after going back to the U.S. map. County lines
+  come from us-atlas (window.EQV_COUNTY_LINES in county-map-data.js). Assets ?v=4.
 - Confirm current stats/figures with client before publishing (see open
   questions in `eqvgroup-research.md`).
 - **PDF documents**: the owner-forms cards on `eqv-operating.html` (W-9,
