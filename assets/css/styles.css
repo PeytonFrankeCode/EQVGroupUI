@@ -51,7 +51,7 @@
   --eqv-font-sans: "Inter var", "Aptos", system-ui, -apple-system, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
   --eqv-maxw: 1200px;
-  --eqv-gutter: clamp(1.25rem, 4vw, 3rem);
+  --eqv-gutter: clamp(1.25rem, 4vw, 4.5rem);
   --eqv-radius: 12px;
   --eqv-radius-pill: 999px;
 }
@@ -105,7 +105,7 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 /* ---------- Helpers ---------- */
 /* Front page: let every section (and the header/menu edges) stretch wider on
    large screens instead of sitting in a narrow centered column. */
-@media (min-width: 1100px) { .eqv-wide { --eqv-maxw: min(1520px, 93vw); } }
+@media (min-width: 1100px) { .eqv-wide { --eqv-maxw: 100%; } }
 .eqv-container { max-width: var(--eqv-maxw); margin-inline: auto; padding-inline: var(--eqv-gutter); width: 100%; }
 .eqv-section { padding-block: clamp(4rem, 9vw, 7.5rem); }
 .eqv-eyebrow {
@@ -146,6 +146,10 @@ h1, h2, h3 { line-height: 1.05; margin: 0; font-weight: 800; }
 .eqv-header:not(.is-scrolled) { color: #fff; }
 .eqv-header:not(.is-scrolled) .eqv-logo,
 .eqv-header:not(.is-scrolled) .eqv-theme-toggle { color: #fff; }
+/* The header always spans the full window so the logo sits in the top-left
+   corner (and the Menu in the top-right) on every screen size, instead of
+   centering with the page content on wide monitors. */
+.eqv-header > .eqv-container { max-width: none; }
 .eqv-header__inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; }
 .eqv-header__actions { display: flex; align-items: center; gap: 1.4rem; }
 
@@ -218,8 +222,8 @@ body.menu-open .eqv-header .eqv-theme-toggle { color: var(--eqv-color-text); }
   background: var(--eqv-color-bg); color: var(--eqv-color-text);
   display: grid; grid-template-columns: 1.4fr 1fr; align-items: center;
   gap: 2rem; padding-block: clamp(5rem, 10vh, 7rem) 3rem;
-  /* Line the menu text up with the logo/page container edge at every width */
-  padding-inline: max(var(--eqv-gutter), calc((100% - var(--eqv-maxw)) / 2 + var(--eqv-gutter)));
+  /* Line the menu text up with the logo, which hugs the left edge */
+  padding-inline: var(--eqv-gutter);
   opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s ease;
 }
 body.menu-open .eqv-menu { opacity: 1; visibility: visible; }
@@ -417,10 +421,13 @@ body.menu-open .eqv-menu__nav a:nth-child(7) { transition-delay: .44s; }
 /* On large screens let the footprint section breathe wider and hand the map
    much more room so it fills the viewport instead of floating in the middle. */
 @media (min-width: 1100px) {
-  .eqv-ops > .eqv-container { max-width: min(1520px, 93vw); }
+  .eqv-ops > .eqv-container { max-width: max(var(--eqv-maxw), min(1520px, 93vw)); }
   .eqv-ops__grid { grid-template-columns: 2.15fr 1fr; }
   .eqv-map3d__tilt { --eqv-map-scale: 1.34; }
-  .eqv-map3d { padding-block: 4.5rem 3.5rem; }
+  .eqv-ops .eqv-map3d { padding-block: 4.5rem 7.5rem; }
+  /* Stop the map growing past its 1600px-screen size on very wide monitors
+     (it would spill into the next section); center it in its column. */
+  .eqv-ops .eqv-map3d { max-width: 1100px; margin-inline: auto; }
 }
 
 /* Interactive holographic 3D US map */
